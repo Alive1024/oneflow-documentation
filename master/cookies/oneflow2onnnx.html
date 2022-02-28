@@ -251,7 +251,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="serving.html" class="md-tabs__link md-tabs__link--active">
+      <a href="oneflow2onnnx.html" class="md-tabs__link md-tabs__link--active">
         OneFlow Cookies
       </a>
     </li>
@@ -608,18 +608,6 @@
             
   
   
-  
-    <li class="md-nav__item">
-      <a href="serving.html" class="md-nav__link">
-        模型部署
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
     
   
   
@@ -739,6 +727,18 @@
   
 </nav>
       
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="serving.html" class="md-nav__link">
+        模型部署
+      </a>
     </li>
   
 
@@ -917,9 +917,9 @@
                 <h1 id="oneflow-onnx">OneFlow 与 ONNX 交互<a class="headerlink" href="#oneflow-onnx" title="Permanent link">&para;</a></h1>
 <p>本教程主要介绍 OneFlow 与 ONNX 进行交互的用法，包括 ONNX 简介、如何将 OneFlow 模型导出为 ONNX 模型，以及如何使用 ONNX 模型进行推理。</p>
 <h2 id="onnx">ONNX 简介<a class="headerlink" href="#onnx" title="Permanent link">&para;</a></h2>
-<p><a href="https://onnx.ai/index.html">ONNX</a> 的全称为 Open Neural Network Exchange (开放神经网络交换)，是一种针对机器学习算法所设计的开放式文件格式标准，用于存储训练好的算法模型。许多主流的深度学习框架（如 OneFlow、PyTorch、TensorFlow、MXNet）都支持将模型导出为 ONNX 模型。ONNX 使得不同的深度学习框架可以以一种统一的格式存储模型数据以及进行交互。另外，ONNX 有相应的运行时（Runtime）—— <a href="https://onnxruntime.ai/">ONNX Runtime</a>，便于在多种平台（Linux、Windows、Mac OS、Android、iOS等）及多种硬件（CPU、GPU等）上进行模型部署和推理。ONNX 模型也可以作为一种中间格式，便于多种框架下的模型互相转换。</p>
+<p><a href="https://onnx.ai/index.html">ONNX</a> 的全称为 Open Neural Network Exchange (开放神经网络交换)，是一种针对机器学习算法所设计的开放式文件格式标准，用于存储训练好的算法模型。许多主流的深度学习框架（如 OneFlow、PyTorch、TensorFlow、MXNet）都支持将模型导出为 ONNX 模型。ONNX 使得不同的深度学习框架可以以一种统一的格式存储模型数据以及进行交互。另外，ONNX 有相应的运行时（Runtime）—— <a href="https://onnxruntime.ai/">ONNX Runtime</a>，便于在多种平台（Linux、Windows、Mac OS、Android、iOS等）及多种硬件（CPU、GPU等）上进行模型部署和推理。</p>
 <h3 id="onnx_1">ONNX 相关库<a class="headerlink" href="#onnx_1" title="Permanent link">&para;</a></h3>
-<p>ONNX 对应多个相关库，常见的几个库的功能如下所述。本教程中主要涉及 onnxruntime-gpu。</p>
+<p>ONNX 对应多个相关库，常见的几个库的功能如下所述。本教程中涉及的是 onnxruntime-gpu，可通过 <code>pip install onnxruntime-gpu</code> 进行安装。</p>
 <ol>
 <li>
 <p><a href="https://github.com/onnx/onnx">onnx</a>: ONNX 模型格式标准</p>
@@ -935,16 +935,10 @@
 </li>
 </ol>
 <h2 id="oneflow-onnx_1">将 OneFlow 模型导出为 ONNX 模型<a class="headerlink" href="#oneflow-onnx_1" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/Oneflow-Inc/oneflow_convert">oneflow-onnx</a> 是 OneFlow 官方提供的模型转换工具，支持将 OneFlow 静态图模型导出为 ONNX 模型。目前 oneflow-onnx 支持80多种 OneFlow OP 导出为 ONNX OP，具体可参见：<a href="https://github.com/Oneflow-Inc/oneflow_convert/blob/main/docs/oneflow2onnx/op_list.md">OneFlow2ONNX 支持的OP列表</a>。</p>
+<p><a href="https://github.com/Oneflow-Inc/oneflow_convert">oneflow-onnx</a> 是 OneFlow 团队提供的模型转换工具，支持将 OneFlow 静态图模型导出为 ONNX 模型。目前 oneflow-onnx 支持 80 多种 OneFlow OP 导出为 ONNX OP，具体可参见：<a href="https://github.com/Oneflow-Inc/oneflow_convert/blob/main/docs/oneflow2onnx/op_list.md">OneFlow2ONNX 支持的OP列表</a>。</p>
 <h3 id="oneflow-onnx_2">安装 oneflow-onnx<a class="headerlink" href="#oneflow-onnx_2" title="Permanent link">&para;</a></h3>
-<p>oneflow-onnx 独立于 OneFlow，需要单独安装。安装方式如下所述：</p>
-<p>通过 pip 安装：
-<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">oneflow</span><span class="o">-</span><span class="n">onnx</span>
-</code></pre></div></p>
-<p>通过源码安装：
-<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Oneflow</span><span class="o">-</span><span class="n">Inc</span><span class="o">/</span><span class="n">oneflow_convert</span>
-<span class="n">cd</span> <span class="n">oneflow_convert</span>
-<span class="n">python3</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<p>oneflow-onnx 独立于 OneFlow，需要单独通过 pip 安装：
+<div class="highlight"><pre><span></span><code>pip install oneflow-onnx
 </code></pre></div></p>
 <h3 id="oneflow-onnx_3">oneflow-onnx 的使用方法<a class="headerlink" href="#oneflow-onnx_3" title="Permanent link">&para;</a></h3>
 <p>要将 OneFlow 静态图模型导出为 ONNX 模型，只需调用 <code>export_onnx_model</code> 函数。</p>
@@ -960,7 +954,7 @@
 各参数的含义如下:</p>
 <ol>
 <li>
-<p>graph: 需要转换的 graph (oneflow.nn.Graph 类类型的对象)</p>
+<p>graph: 需要转换的 graph ( <a href="../basics/08_nn_graph.html">Graph</a> 对象)</p>
 </li>
 <li>
 <p>external_data: 将权重另存为 ONNX 模型的外部数据，通常是为了避免 protobuf 的 2GB 文件大小限制</p>
@@ -986,10 +980,10 @@
 <code>convert_to_onnx_and_check</code> 函数的参数是 <code>export_onnx_model</code> 函数的参数的超集，可以额外传入 <code>print_outlier=True</code> 来输出检查过程中发现的超出合理误差范围内的异常值。</p>
 <h3 id="_1">导出模型时的注意点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <ul>
-<li>在导出模型之前，需要将模型设置成 eval 模式，因为 dropout、BatchNorm 等操作在训练和推理模型下的行为不同</li>
+<li>在导出模型之前，需要将模型设置成 eval 模式，因为 Dropout、Batch Normalization 等操作在训练和推理模型下的行为不同</li>
 <li>在构建静态图模型时，需要指定一个输入，此输入的值可以是随机的，但要保证它是正确的数据类型和形状</li>
 <li>ONNX 模型接受的输入的形状是固定的，batch 维度的大小可以是变化的，通过将 <code>dynamic_batch_size</code> 参数设为 <code>True</code> 可以使得导出的 ONNX 模型支持动态 batch 大小</li>
-<li>oneflow-onnx 必须使用静态图模型（ Graph 模式）作为导出函数的参数。对于动态图模型（Eager 模式），需要将动态图模型构建为静态图模型，可参见下文的示例。</li>
+<li>oneflow-onnx 必须使用静态图模型（Graph 模式）作为导出函数的参数。对于动态图模型（Eager 模式），需要将动态图模型构建为静态图模型，可参见下文的示例。</li>
 </ul>
 <h2 id="_2">用法示例<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>在本节中，将以常见的 ResNet-34 模型为例，介绍将 OneFlow 模型导出为 ONNX 模型并进行推理的流程。我们在此直接使用 <a href="https://github.com/Oneflow-Inc/vision">FlowVision</a> 库提供的 ResNet-34 模型，并使用 FlowVision 提供的在 ImageNet 数据集上训练得到的 ResNet-34 权重。</p>
@@ -1000,7 +994,7 @@
 <span class="kn">from</span> <span class="nn">flowvision.models</span> <span class="kn">import</span> <span class="n">resnet34</span>
 <span class="kn">from</span> <span class="nn">oneflow_onnx.oneflow2onnx.util</span> <span class="kn">import</span> <span class="n">convert_to_onnx_and_check</span>
 </code></pre></div></p>
-<p>使用动态图模型构建静态图模型，详情请参见：<a href="../basics/08_nn_graph.html">静态图模块 nn.Graph</a>
+<p>使用动态图模型构建静态图模型，详情请参见：<a href="../basics/08_nn_graph.html">静态图模块 nn.Graph</a></p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ResNet34Graph</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eager_model</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -1008,7 +1002,7 @@
 
     <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>将 OneFlow 静态图模型导出为 ONNX 模型：
 <div class="highlight"><pre><span></span><code><span class="c1"># 模型参数存储目录</span>
 <span class="n">MODEL_PARAMS</span> <span class="o">=</span> <span class="s1">&#39;checkpoints/resnet34&#39;</span>
@@ -1033,7 +1027,7 @@
 </code></pre></div>
 运行完毕后，可以在当前目录中找到名为 <code>model.onnx</code> 的文件，即导出的 ONNX 模型。</p>
 <h3 id="onnx_3">使用 ONNX 模型进行推理<a class="headerlink" href="#onnx_3" title="Permanent link">&para;</a></h3>
-<p>进行推理之前，要保证已经安装了 ONNX Runtime, 即 onnxruntime 或 onnxruntime-gpu。在本教程的实验环境中，安装的是 onnxruntime-gpu 以调用 GPU 进行计算。</p>
+<p>进行推理之前，要保证已经安装了 ONNX Runtime, 即 onnxruntime 或 onnxruntime-gpu。在本教程的实验环境中，安装的是 onnxruntime-gpu 以优先调用 GPU 进行计算，如果运行的机器上没有可用的 GPU，则会使用 CPU。</p>
 <p>我们使用下面这张图像作为模型的输入：</p>
 <div align="center">
     <img alt="Demo Image" src="./imgs/cat.jpg" width="300px">
@@ -1118,7 +1112,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="serving.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 模型部署" rel="prev">
+        <a href="../parallelism/06_pipeline.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 流水并行训练" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1127,11 +1121,26 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              模型部署
+              流水并行训练
             </div>
           </div>
         </a>
       
+      
+        
+        <a href="serving.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 模型部署" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              模型部署
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   
