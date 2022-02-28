@@ -919,11 +919,21 @@
 <h2 id="onnx">ONNX 简介<a class="headerlink" href="#onnx" title="Permanent link">&para;</a></h2>
 <p><a href="https://onnx.ai/index.html">ONNX</a> 的全称为 Open Neural Network Exchange (开放神经网络交换)，是一种针对机器学习算法所设计的开放式文件格式标准，用于存储训练好的算法模型。许多主流的深度学习框架（如 OneFlow、PyTorch、TensorFlow、MXNet）都支持将模型导出为 ONNX 模型。ONNX 使得不同的深度学习框架可以以一种统一的格式存储模型数据以及进行交互。另外，ONNX 有相应的运行时（Runtime）—— <a href="https://onnxruntime.ai/">ONNX Runtime</a>，便于在多种平台（Linux、Windows、Mac OS、Android、iOS等）及多种硬件（CPU、GPU等）上进行模型部署和推理。ONNX 模型也可以作为一种中间格式，便于多种框架下的模型互相转换。</p>
 <h3 id="onnx_1">ONNX 相关库<a class="headerlink" href="#onnx_1" title="Permanent link">&para;</a></h3>
-<p>ONNX 对应多个相关库，常见的几个库的功能如下所述。本教程中主要涉及 onnxruntime-gpu。
-- <a href="https://github.com/onnx/onnx">onnx</a>: ONNX 模型格式标准。
-- <a href="https://github.com/microsoft/onnxruntime">onnxruntime &amp; onnxruntime-gpu</a>: ONNX 运行时，用于加载 ONNX 模型进行推理。onnxruntime 和 onnxruntime-gpu 分别支持 CPU 推理和 GPU推理。
-- <a href="https://github.com/daquexian/onnx-simplifier">onnx-simplifier</a>: 用于简化 ONNX 模型的结构，例如消除结果恒为常量的算子。
-- <a href="https://github.com/onnx/optimizer">onnxoptimizer</a>: 用于通过图变换等方式优化 ONNX 模型。</p>
+<p>ONNX 对应多个相关库，常见的几个库的功能如下所述。本教程中主要涉及 onnxruntime-gpu。</p>
+<ol>
+<li>
+<p><a href="https://github.com/onnx/onnx">onnx</a>: ONNX 模型格式标准</p>
+</li>
+<li>
+<p><a href="https://github.com/microsoft/onnxruntime">onnxruntime &amp; onnxruntime-gpu</a>: ONNX 运行时，用于加载 ONNX 模型进行推理。onnxruntime 和 onnxruntime-gpu 分别支持 CPU 推理和 GPU推理</p>
+</li>
+<li>
+<p><a href="https://github.com/daquexian/onnx-simplifier">onnx-simplifier</a>: 用于简化 ONNX 模型的结构，例如消除结果恒为常量的算子</p>
+</li>
+<li>
+<p><a href="https://github.com/onnx/optimizer">onnxoptimizer</a>: 用于通过图变换等方式优化 ONNX 模型</p>
+</li>
+</ol>
 <h2 id="oneflow-onnx_1">将 OneFlow 模型导出为 ONNX 模型<a class="headerlink" href="#oneflow-onnx_1" title="Permanent link">&para;</a></h2>
 <p><a href="https://github.com/Oneflow-Inc/oneflow_convert">oneflow-onnx</a> 是 OneFlow 官方提供的模型转换工具，支持将 OneFlow 静态图模型导出为 ONNX 模型。目前 oneflow-onnx 支持80多种 OneFlow OP 导出为 ONNX OP，具体可参见：<a href="https://github.com/Oneflow-Inc/oneflow_convert/blob/main/docs/oneflow2onnx/op_list.md">OneFlow2ONNX 支持的OP列表</a>。</p>
 <h3 id="oneflow-onnx_2">安装 oneflow-onnx<a class="headerlink" href="#oneflow-onnx_2" title="Permanent link">&para;</a></h3>
@@ -948,12 +958,24 @@
                   <span class="n">dynamic_batch_size</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
 各参数的含义如下:
-- graph: 需要转换的 graph (oneflow.nn.Graph 类类型的对象)。
-- external_data: 将权重另存为 ONNX 模型的外部数据，通常是为了避免 protobuf 的 2GB 文件大小限制。
-- opset: 指定转换模型的版本 (int，默认为 <code>oneflow_onnx.constants.PREFERRED_OPSET</code>)。
-- flow_weight_dir: OneFlow模型权重的保存路径。
-- onnx_model_path: 导出的 ONNX 模型保存路径。用户需要调用 <code>check_point.save(flow_weight_dir)</code>，等待OneFlow模型权重保存完成。
-- dynamic_batch_size: 导出的 ONNX 模型是否支持动态 batch，默认为False。</p>
+1. graph: 需要转换的 graph (oneflow.nn.Graph 类类型的对象)</p>
+<ol>
+<li>
+<p>external_data: 将权重另存为 ONNX 模型的外部数据，通常是为了避免 protobuf 的 2GB 文件大小限制</p>
+</li>
+<li>
+<p>opset: 指定转换模型的版本 (int，默认为 <code>oneflow_onnx.constants.PREFERRED_OPSET</code>)</p>
+</li>
+<li>
+<p>flow_weight_dir: OneFlow模型权重的保存路径</p>
+</li>
+<li>
+<p>onnx_model_path: 导出的 ONNX 模型保存路径。用户需要调用 <code>check_point.save(flow_weight_dir)</code>，等待OneFlow模型权重保存完成</p>
+</li>
+<li>
+<p>dynamic_batch_size: 导出的 ONNX 模型是否支持动态 batch，默认为False</p>
+</li>
+</ol>
 <p>另外，oneflow-onnx 还提供了一个名为 <code>convert_to_onnx_and_check</code> 的函数，用于转换并检查转换出的 ONNX 模型。其中的检查指的是将同样的输入分别送入原本的 OneFlow 模型和转换后的 ONNX 模型，然后比较两个输出中对应的每个数值之差是否在合理的误差范围内。</p>
 <p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">oneflow_onnx.oneflow2onnx.util</span> <span class="kn">import</span> <span class="n">convert_to_onnx_and_check</span>
 
