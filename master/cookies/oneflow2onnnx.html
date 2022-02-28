@@ -957,9 +957,11 @@
                   <span class="n">onnx_model_path</span><span class="o">=</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span> 
                   <span class="n">dynamic_batch_size</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-各参数的含义如下:
-1. graph: 需要转换的 graph (oneflow.nn.Graph 类类型的对象)</p>
+各参数的含义如下:</p>
 <ol>
+<li>
+<p>graph: 需要转换的 graph (oneflow.nn.Graph 类类型的对象)</p>
+</li>
 <li>
 <p>external_data: 将权重另存为 ONNX 模型的外部数据，通常是为了避免 protobuf 的 2GB 文件大小限制</p>
 </li>
