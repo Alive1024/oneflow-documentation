@@ -957,10 +957,10 @@
 <p>graph: 需要转换的 graph ( <a href="../basics/08_nn_graph.html">Graph</a> 对象)</p>
 </li>
 <li>
-<p>external_data: 将权重另存为 ONNX 模型的外部数据，通常是为了避免 protobuf 的 2GB 文件大小限制</p>
+<p>external_data: 是否将权重另存为 ONNX 模型的外部数据，为 <code>True</code> 时通常是为了避免 protobuf 的 2GB 文件大小限制</p>
 </li>
 <li>
-<p>opset: 指定转换模型的版本 (int，默认为 <code>oneflow_onnx.constants.PREFERRED_OPSET</code>)</p>
+<p>opset: 指定转换模型的版本 ( int，默认为 10 )</p>
 </li>
 <li>
 <p>flow_weight_dir: OneFlow 模型权重的保存路径</p>
@@ -986,7 +986,8 @@
 <li>oneflow-onnx 必须使用静态图模型（Graph 模式）作为导出函数的参数。对于动态图模型（Eager 模式），需要将动态图模型构建为静态图模型，可参见下文的示例。</li>
 </ul>
 <h2 id="_2">用法示例<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>在本节中，将以常见的 ResNet-34 模型为例，介绍将 OneFlow 模型导出为 ONNX 模型并进行推理的流程。我们在此直接使用 <a href="https://github.com/Oneflow-Inc/vision">FlowVision</a> 库提供的 ResNet-34 模型，并使用 FlowVision 提供的在 ImageNet 数据集上训练得到的 ResNet-34 权重。</p>
+<p>在本节中，将以常见的 ResNet-34 模型为例，介绍将 OneFlow 模型导出为 ONNX 模型并进行推理的流程。</p>
+<p>下面的代码中使用到了 <a href="https://github.com/Oneflow-Inc/vision">FlowVision</a>，它是基于 OneFlow 搭建的、专用于计算机视觉任务的工具库，包含诸多模型、数据增强方法、数据变换操作、数据集等。我们在此直接使用 FlowVision 库提供的 ResNet-34 模型，并使用 FlowVision 提供的在 ImageNet 数据集上训练得到的 ResNet-34 权重。</p>
 <h3 id="onnx_2">导出为 ONNX 模型<a class="headerlink" href="#onnx_2" title="Permanent link">&para;</a></h3>
 <p>导入相关依赖：
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
@@ -1027,7 +1028,7 @@
 </code></pre></div>
 运行完毕后，可以在当前目录中找到名为 <code>model.onnx</code> 的文件，即导出的 ONNX 模型。</p>
 <h3 id="onnx_3">使用 ONNX 模型进行推理<a class="headerlink" href="#onnx_3" title="Permanent link">&para;</a></h3>
-<p>进行推理之前，要保证已经安装了 ONNX Runtime, 即 onnxruntime 或 onnxruntime-gpu。在本教程的实验环境中，安装的是 onnxruntime-gpu 以优先调用 GPU 进行计算，如果运行的机器上没有可用的 GPU，则会使用 CPU。</p>
+<p>进行推理之前，要保证已经安装了 ONNX Runtime, 即 onnxruntime 或 onnxruntime-gpu。在本教程的实验环境中，安装的是 onnxruntime-gpu 以调用 GPU 进行计算，但如果机器上没有 GPU，也可以指定使用 CPU 进行计算，详见下文。</p>
 <p>我们使用下面这张图像作为模型的输入：</p>
 <div align="center">
     <img alt="Demo Image" src="./imgs/cat.jpg" width="300px">
@@ -1062,7 +1063,7 @@
     <span class="k">return</span> <span class="n">processed_img</span>
 </code></pre></div></p>
 <p>接下来，使用 ONNX 模型进行推理，主要步骤包括：创建一个 InferenceSession 对象，然后调用其 <code>run</code> 方法进行推理。</p>
-<p>在 onnxruntime(-gpu) 1.9 及以上版本中，创建 InferenceSession 对象时需要显式指定 <code>providers</code> 参数来选择使用的硬件。对于 onnxruntime-gpu，可以指定的值包括 <code>TensorrtExecutionProvider</code>、<code>CUDAExecutionProvider</code>、<code>CPUExecutionProvider</code>。推理时将会按照此先后顺序依次尝试调用对应的硬件进行计算。</p>
+<p>在 onnxruntime(-gpu) 1.9 及以上版本中，创建 InferenceSession 对象时需要显式指定 <code>providers</code> 参数来选择使用的硬件。对于 onnxruntime-gpu，可以指定的值包括 <code>TensorrtExecutionProvider</code>、<code>CUDAExecutionProvider</code>、<code>CPUExecutionProvider</code>。如果运行的机器上没有 GPU，可以将 <code>providers</code> 参数指定为 <code>['CPUExecutionProvider']</code> 来使用 CPU 进行计算。</p>
 <p>ONNX 模型的输入数据的类型是一个 dict，其 keys 为导出 ONNX 模型时的输入名称 "input names"，values 为 NumPy 数组类型的实际输入数据。可以通过 InferenceSession 对象的 <code>get_inputs</code> 方法获取"input names"，该方法的返回值是 <code>onnxruntime.NodeArg</code> 类型的对象组成的 list，对于 NodeArg 对象，可使用其 <code>name</code> 属性获取 str 类型的名称。在本教程中，输入只有图像数据本身，因此可以通过在 InferenceSession 对象上调用 <code>.get_inputs()[0].name</code>，获取输入对应的 "input names"，其值为 <code>_ResNet34Graph_0-input_0/out</code>，将此值作为 key 构造输入 ONNX 模型的 dict。当然，也可以不预先指定，而在运行时动态获取。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 从文件中读取 ImageNet 数据集的类别名称</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;ImageNet-Class-Names.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -1087,7 +1088,7 @@
 <div class="highlight"><pre><span></span><code>(base) root@training-notebook-654c6f-654c6f-jupyter-master-0:/workspace# python infer.py 
 285: &#39;Egyptian cat&#39;,
 </code></pre></div></p>
-<p>以上推理是在 Python 环境下进行的，实际使用时可以根据部署环境选择不同的 ONNX Runtime 来使用导出的 ONNX 模型。</p>
+<p>以上是在 Python 环境中使用 GPU 或 CPU 进行推理，实际使用时可以根据部署环境选择不同的 ONNX Runtime 来使用导出的 ONNX 模型。</p>
                 
               
               
