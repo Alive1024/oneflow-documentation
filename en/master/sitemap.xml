@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://docs.oneflow.org/master/index.html</loc>
+         <loc>https://docs.oneflow.org/index.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.oneflow.org/master/basics/01_quickstart.html</loc>
+         <loc>https://docs.oneflow.org/basics/01_quickstart.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.oneflow.org/master/basics/02_tensor.html</loc>
+         <loc>https://docs.oneflow.org/basics/02_tensor.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.oneflow.org/master/basics/03_dataset_dataloader.html</loc>
+         <loc>https://docs.oneflow.org/basics/03_dataset_dataloader.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.oneflow.org/master/basics/04_build_network.html</loc>
+         <loc>https://docs.oneflow.org/basics/04_build_network.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.oneflow.org/master/basics/05_autograd.html</loc>
+         <loc>https://docs.oneflow.org/basics/05_autograd.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.oneflow.org/master/basics/06_optimization.html</loc>
+         <loc>https://docs.oneflow.org/basics/06_optimization.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.oneflow.org/master/basics/07_model_load_save.html</loc>
+         <loc>https://docs.oneflow.org/basics/07_model_load_save.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.oneflow.org/master/basics/08_nn_graph.html</loc>
+         <loc>https://docs.oneflow.org/basics/08_nn_graph.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.oneflow.org/master/cookies/serving.html</loc>
+         <loc>https://docs.oneflow.org/cookies/serving.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.oneflow.org/master/parallelism/01_introduction.html</loc>
+         <loc>https://docs.oneflow.org/parallelism/01_introduction.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.oneflow.org/master/parallelism/02_sbp.html</loc>
+         <loc>https://docs.oneflow.org/parallelism/02_sbp.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.oneflow.org/master/parallelism/03_consistent_tensor.html</loc>
+         <loc>https://docs.oneflow.org/parallelism/03_consistent_tensor.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.oneflow.org/master/parallelism/04_launch.html</loc>
+         <loc>https://docs.oneflow.org/parallelism/04_launch.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.oneflow.org/master/parallelism/05_ddp.html</loc>
+         <loc>https://docs.oneflow.org/parallelism/05_ddp.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.oneflow.org/master/parallelism/06_pipeline.html</loc>
+         <loc>https://docs.oneflow.org/parallelism/06_pipeline.html</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
