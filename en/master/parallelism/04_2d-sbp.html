@@ -11,14 +11,14 @@
       
       
       
-        <link rel="canonical" href="https://docs.oneflow.org/parallelism/05_ddp.html">
+        <link rel="canonical" href="https://docs.oneflow.org/parallelism/04_2d-sbp.html">
       
       <link rel="icon" href="../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.11">
     
     
       
-        <title>Data Parallelism Training - OneFlow</title>
+        <title>2D SBP - OneFlow</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#data-parallelism-training" class="md-skip">
+        <a href="#2d-sbp" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data Parallelism Training
+              2D SBP
             
           </span>
         </div>
@@ -530,11 +530,72 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="04_2d-sbp.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2D SBP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="04_2d-sbp.html" class="md-nav__link md-nav__link--active">
         2D SBP
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2d-devices-array" class="md-nav__link">
+    2D Devices Array
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2d-sbp_1" class="md-nav__link">
+    2D SBP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2d-sbp-signature" class="md-nav__link">
+    2D SBP Signature
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#an-example-of-using-2d-sbp" class="md-nav__link">
+    An Example of Using 2D SBP
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -554,71 +615,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Data Parallelism Training
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="05_ddp.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="05_ddp.html" class="md-nav__link">
         Data Parallelism Training
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#run-data-parallel-training-with-sbp-configuration" class="md-nav__link">
-    Run Data Parallel Training With SBP Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-data-parallel-training-with-distributeddataparallel" class="md-nav__link">
-    Run Data Parallel Training With DistributedDataParallel
-  </a>
-  
-    <nav class="md-nav" aria-label="Run Data Parallel Training With DistributedDataParallel">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#distributedsampler" class="md-nav__link">
-    DistributedSampler
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -763,29 +764,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#run-data-parallel-training-with-sbp-configuration" class="md-nav__link">
-    Run Data Parallel Training With SBP Configuration
+  <a href="#2d-devices-array" class="md-nav__link">
+    2D Devices Array
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-data-parallel-training-with-distributeddataparallel" class="md-nav__link">
-    Run Data Parallel Training With DistributedDataParallel
-  </a>
-  
-    <nav class="md-nav" aria-label="Run Data Parallel Training With DistributedDataParallel">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#distributedsampler" class="md-nav__link">
-    DistributedSampler
+  <a href="#2d-sbp_1" class="md-nav__link">
+    2D SBP
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#2d-sbp-signature" class="md-nav__link">
+    2D SBP Signature
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#an-example-of-using-2d-sbp" class="md-nav__link">
+    An Example of Using 2D SBP
+  </a>
   
 </li>
       
@@ -801,17 +803,63 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/OneFlow-Inc/oneflow-documentation/blob/master/en/docs/parallelism/05_ddp.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/OneFlow-Inc/oneflow-documentation/blob/master/en/docs/parallelism/04_2d-sbp.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="data-parallelism-training">DATA PARALLELISM TRAINING<a class="headerlink" href="#data-parallelism-training" title="Permanent link">&para;</a></h1>
-<p>In <a href="01_introduction.html">Common Distributed Parallel Strategies</a>, we introduced the characteristics of data parallel.</p>
-<p>OneFlow provides two ways to accomplish data parallel, and one of them is to use the original concept of Oneflow to run data parallel training by configurating global tensor. This is also the <strong>recommanded way</strong> to run data parallel training on Oneflow.</p>
-<p>Besides, to facilitate the users who are transferring from PyTorch to OneFlow, OneFlow offers the interface consistent with PyTorch <code>torch.nn.parallel.DistributedDataParallel</code>,  <a href="https://oneflow.readthedocs.io/en/master/nn.html#oneflow.nn.parallel.DistributedDataParallel">oneflow.nn.parallel.DistributedDataParallel</a> so that users can also conveniently extend single machine training to data parallel training. </p>
-<h2 id="run-data-parallel-training-with-sbp-configuration">Run Data Parallel Training With SBP Configuration<a class="headerlink" href="#run-data-parallel-training-with-sbp-configuration" title="Permanent link">&para;</a></h2>
-<p>The following code runs data parallel training by configurating global tensor. </p>
+                <h1 id="2d-sbp">2D SBP<a class="headerlink" href="#2d-sbp" title="Permanent link">&para;</a></h1>
+<p>After reading the <a href="02_sbp.html">Global View</a> and <a href="03_consistent_tensor.html">Global Tensor</a>, you may have learned about the basic concepts of SBP and SBP Signature, and can get started with related tasks. In fact, both these two documents refers to <strong>1D SBP</strong>.</p>
+<p>Since you have known about 1D SBP, this document introduces 2D SBP, which can more flexibly deal with more complex distributed training scenarios.</p>
+<h2 id="2d-devices-array">2D Devices Array<a class="headerlink" href="#2d-devices-array" title="Permanent link">&para;</a></h2>
+<p>We are already familiar with the placement configuration of 1D SBP. In the scenario of 1D SBP, configure the cluster through the <a href="https://oneflow.readthedocs.io/en/master/placement.html#oneflow.placement">oneflow.placement</a> interface. For example, use the 0~3 GPU graphics in the cluster:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">placement1</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<p>The above <code>"cuda"</code> specifies the device type, and <code>ranks=[0, 1, 2, 3]</code> specifies the computing devices in the cluster. In fact, <code>ranks</code> can be not only a one-dimensional int list, but also a multi-dimensional int array:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">placement2</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+</code></pre></div>
+<p>When <code>ranks</code> is in the form of a one-dimensional list like <code>ranks=[0, 1, 2, 3]</code>, all devices in the cluster form a 1D device vector, which is where the 1D SBP name comes from.</p>
+<p>When <code>ranks</code> is in the form of a multi-dimensional array, the devices in the cluster are grouped into a multi-dimensional array of devices. <code>ranks=[[0, 1], [2, 3]]</code> means that the four computing devices in the cluster are divided into a <span class="arithmatex">\(2 \times 2\)</span> device array.</p>
+<h2 id="2d-sbp_1">2D SBP<a class="headerlink" href="#2d-sbp_1" title="Permanent link">&para;</a></h2>
+<p>When constructing a Global Tensor, we need to specify both <code>placement</code> and <code>SBP</code>. When the cluster in <code>placement</code> is a 2-dimensional device array, SBP must also correspond to it, being a <code>tuple</code> with a length of 2. The 0<sup>th</sup> and 1<sup>st</sup> elements in this <code>tuple</code> respectively describes the distribution of Global Tensor in the 0<sup>th</sup> and 1<sup>st</sup> dimensions of the device array.</p>
+<p>For example, The following code configures a <span class="arithmatex">\(2 \times 2\)</span> device array, and sets the 2D SBP to <code>(broadcast, split(0))</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">placement</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sbp</span> <span class="o">=</span> <span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">broadcast</span><span class="p">,</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a_to_global</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">placement</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">sbp</span><span class="p">)</span>
+</code></pre></div>
+<p>It means that logically the data, over the entire device array, is <code>broadcast</code> in the 0<sup>th</sup> dimension ("viewed vertically"); <code>split(0)</code> in the 1<sup>st</sup> dimension ("viewed across").</p>
+<p>See the following figure:</p>
+<p><img alt="" src="imgs/2d-sbp.png" /></p>
+<p>In the above figure, the left side is the global data, and the right side is the data of each device on the device array. As you can see, from the perspective of the 0<sup>th</sup> dimension, they are all in <code>broadcast</code> relations:</p>
+<ul>
+<li>The data in (group0, device0) and (group1, device0) are consistent, and they are in <code>broadcast</code> relations to each other</li>
+<li>The data in (group0, device1) and (group1, device1) are consistent, and they are in <code>broadcast</code> relations to each other</li>
+</ul>
+<p>From the perspective of the 1<sup>st</sup> dimension, they are all in <code>split(0)</code> relations:</p>
+<ul>
+<li>(group0, device0) and (group0, device1) are in <code>split(0)</code> relations to each other</li>
+<li>(group1, device0) and (group1, device1) are in <code>split(0)</code> relations to each other</li>
+</ul>
+<p>It may be difficult to directly understand the correspondence between logical data and physical data in the final device array. When thinking about 2D SBP, you can imagine an intermediate state (gray part in the above figure) there. Take <code>(broadcast, split(0))</code> as an example:</p>
+<ul>
+<li>First, the original logical tensor is broadcast to 2 groups through <code>broadcast</code>, and the intermediate state is obtained</li>
+<li>On the basis of the intermediate state, <code>split(0)</code> is continued to be done on the groups to get the status of each physical tensor in the final device array</li>
+</ul>
+<h2 id="2d-sbp-signature">2D SBP Signature<a class="headerlink" href="#2d-sbp-signature" title="Permanent link">&para;</a></h2>
+<p>1D SBP has the concept of SBP signature, similarly, the operator also has 2D SBP signature. Based on mastering the concept of 1D SBP and its signature concept, 2D SBP signature is very simple and you only need to follow one principle:</p>
+<ul>
+<li>Independently derive in the respective dimensions</li>
+</ul>
+<p>Let's take matrix multiplication as an example. First, let's review the case of 1D SBP. Suppose that <span class="arithmatex">\(x \times w = y\)</span> can have the following SBP Signature:</p>
+<div class="arithmatex">\[ broadcast \times split(1) = split(1) \]</div>
+<p>and</p>
+<div class="arithmatex">\[ split(0) \times broadcast = split(0) \]</div>
+<p>Now, suppose we set the 2D SBP for <span class="arithmatex">\(x\)</span> to <span class="arithmatex">\((broadcast, split(0))\)</span> and set the 2D SBP for <span class="arithmatex">\(w\)</span> to <span class="arithmatex">\((split(1), broadcast)\)</span>, then in the context of the 2D SBP, operate <span class="arithmatex">\(x \times w = y\)</span> to obtain the SBP attribute for <span class="arithmatex">\(y\)</span> is <span class="arithmatex">\((split(1), split(0))\)</span>.</p>
+<p>That is to say, the following 2D SBPs constitute the 2D SBP Signature of matrix multiplication:</p>
+<div class="arithmatex">\[ (broadcast, split(0)) \times (split(1), broadcast) =  (split(1), split(0)) \]</div>
+<h2 id="an-example-of-using-2d-sbp">An Example of Using 2D SBP<a class="headerlink" href="#an-example-of-using-2d-sbp" title="Permanent link">&para;</a></h2>
+<p>In this section, we are going to train MobileNetv2 model on CIFAR10 dataset, in order to demonstrate how to conduct distributed training using 2D SBP. Same as the example above, assume that there is a <span class="arithmatex">\(2 \times 2\)</span> device array. Given that readers may not have multiple GPU devices at present, we will use <strong>CPU</strong> to simulate the case of <span class="arithmatex">\(2 \times 2\)</span> device array. And adopt the "Data Parallelism" strategy introduced in <a href="01_introduction.html">COMMON DISTRIBUTED PARALLEL STRATEGY</a>.</p>
 <details class="code"><summary>Code</summary><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
 <span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 <span class="kn">import</span> <span class="nn">flowvision</span>
@@ -819,13 +867,12 @@
 
 <span class="n">BATCH_SIZE</span><span class="o">=</span><span class="mi">64</span>
 <span class="n">EPOCH_NUM</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="n">PLACEMENT</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">S0</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">B</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">broadcast</span>
-
-<span class="n">DEVICE</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">flow</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span>
+<span class="n">DEVICE</span> <span class="o">=</span> <span class="s2">&quot;cpu&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Using </span><span class="si">{}</span><span class="s2"> device&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">))</span>
+
+<span class="n">PLACEMENT</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="n">BROADCAST</span> <span class="o">=</span> <span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">broadcast</span><span class="p">,</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">broadcast</span><span class="p">)</span>
+<span class="n">BS0</span> <span class="o">=</span> <span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">broadcast</span><span class="p">,</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
 
 <span class="n">training_data</span> <span class="o">=</span> <span class="n">flowvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">CIFAR10</span><span class="p">(</span>
     <span class="n">root</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
@@ -840,7 +887,7 @@
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">flowvision</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">mobilenet_v2</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">classifer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">last_channel</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">PLACEMENT</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">PLACEMENT</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">BROADCAST</span><span class="p">)</span>
 
 <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
 <span class="n">optimizer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
@@ -849,8 +896,8 @@
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="se">\n</span><span class="s2">-------------------------------&quot;</span><span class="p">)</span>
     <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_dataloader</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">batch</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_dataloader</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">PLACEMENT</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">S0</span><span class="p">)</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">PLACEMENT</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">S0</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">PLACEMENT</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">BS0</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">PLACEMENT</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">BS0</span><span class="p">)</span>
 
         <span class="c1"># Compute prediction error</span>
         <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -866,103 +913,31 @@
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;loss: </span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="s2">&gt;7f</span><span class="si">}</span><span class="s2">  [</span><span class="si">{</span><span class="n">current</span><span class="si">:</span><span class="s2">&gt;5d</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">size</span><span class="si">:</span><span class="s2">&gt;5d</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
 </code></pre></div>
 </details>
-<p>We can see that this script is almost identical to the training script for the single-machine and single-device configuration, with a few exceptions on some lines related to consitent tensor set-ups. These codes are:</p>
+<p>It can be found that the above process is almost the same as the ordinary single machine with single GPU training process. The main differences are as follows:</p>
 <ul>
-<li>Set placement to place the training one GPU 0 and 1: </li>
+<li>Define the placement and SBP that will be used:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>    <span class="n">PLACEMENT</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<p><div class="highlight"><pre><span></span><code>    <span class="n">PLACEMENT</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+    <span class="n">BROADCAST</span> <span class="o">=</span> <span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">broadcast</span><span class="p">,</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">broadcast</span><span class="p">)</span>
+    <span class="n">BS0</span> <span class="o">=</span> <span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">broadcast</span><span class="p">,</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+The parameter <code>ranks</code> of <code>PLACEMENT</code> is a two-dimensional list, which represents that the devices in the cluster are divided into a device arrays of <span class="arithmatex">\(2 \times 2\)</span>.  As mentioned earlier, the SBP needs to correspond to it and be specified as a tuple with a length of 2.</p>
+<ul>
+<li>Broadcast the model on the cluster:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>    <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">PLACEMENT</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">BROADCAST</span><span class="p">)</span>
 </code></pre></div>
 <ul>
-<li>Broadcast the model on clusters:</li>
+<li>Broadcast and split data on the cluster:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>    <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">PLACEMENT</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code>    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">PLACEMENT</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">BS0</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">PLACEMENT</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">BS0</span><span class="p">)</span>
 </code></pre></div>
-<ul>
-<li>Split the data on cluster with <code>split(0)</code>: </li>
-</ul>
-<div class="highlight"><pre><span></span><code>    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">PLACEMENT</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">S0</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">PLACEMENT</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">S0</span><span class="p">)</span>
+The operation on the data here is the same as the example described above, except that the operation is not a <span class="arithmatex">\(2 \times 2\)</span> tensor, but the training data obtained from the DataLoader.</p>
+<p>We can easily start distributed training via <code>oneflow.distributed.launch</code> module. Execute the following command in the terminal (It is assumed that the above code has been saved to a file named "2d_sbp.py" in the current directory)</p>
+<p><div class="highlight"><pre><span></span><code>python3 -m oneflow.distributed.launch --nproc_per_node<span class="o">=</span><span class="m">4</span> 2d_sbp.py
 </code></pre></div>
-<p>This allows us to follow the instructions in <a href="01_introduction.html">Common Distributed Parallel Strategies</a></p>
-<h2 id="run-data-parallel-training-with-distributeddataparallel">Run Data Parallel Training With DistributedDataParallel<a class="headerlink" href="#run-data-parallel-training-with-distributeddataparallel" title="Permanent link">&para;</a></h2>
-<p>The following codes provides a quick start for training data parallel with <code>oneflow.nn.parallel.DistributedDataParallel</code> :</p>
-<div class="highlight"><pre><span></span><code>wget https://docs.oneflow.org/master/code/parallelism/ddp_train.py <span class="c1">#Download</span>
-python3 -m oneflow.distributed.launch --nproc_per_node <span class="m">2</span> ./ddp_train.py <span class="c1">#data parallel training</span>
-</code></pre></div>
-<p>Out：</p>
-<div class="highlight"><pre><span></span><code>50/500 loss:0.004111831542104483
-50/500 loss:0.00025336415274068713
-...
-500/500 loss:6.184563972055912e-11
-500/500 loss:4.547473508864641e-12
-
-w:tensor([[2.0000],
-        [3.0000]], device=&#39;cuda:1&#39;, dtype=oneflow.float32,
-       grad_fn=&lt;accumulate_grad&gt;)
-
-w:tensor([[2.0000],
-        [3.0000]], device=&#39;cuda:0&#39;, dtype=oneflow.float32,
-       grad_fn=&lt;accumulate_grad&gt;)
-</code></pre></div>
-<p>Click "Code" below to expand the code of the above running script.</p>
-<details class="code"><summary>Code</summary><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
-<span class="kn">from</span> <span class="nn">oneflow.nn.parallel</span> <span class="kn">import</span> <span class="n">DistributedDataParallel</span> <span class="k">as</span> <span class="n">ddp</span>
-
-<span class="n">train_x</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
-    <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
-<span class="p">]</span>
-<span class="n">train_y</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">13</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
-    <span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">26</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
-<span class="p">]</span>
-
-
-<span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="mf">0.01</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">iter_count</span> <span class="o">=</span> <span class="mi">500</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
-
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">x</span>
-
-
-<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
-<span class="n">m</span> <span class="o">=</span> <span class="n">ddp</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<span class="n">loss</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">m</span><span class="o">.</span><span class="n">lr</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">iter_count</span><span class="p">):</span>
-    <span class="n">rank</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">get_rank</span><span class="p">()</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">train_x</span><span class="p">[</span><span class="n">rank</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">train_y</span><span class="p">[</span><span class="n">rank</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
-
-    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">l</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">50</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">iter_count</span><span class="si">}</span><span class="s2"> loss:</span><span class="si">{</span><span class="n">l</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
-    <span class="n">l</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">w:</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">w</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div>
-</details>
-<p>There are only two differences between the data parallelism training code and the stand-alone single-card script:</p>
-<ul>
-<li>Use <code>DistributedDataParallel</code> to wrap the module object (<code>m = ddp(m)</code>)</li>
-<li>Use <a href="https://oneflow.readthedocs.io/en/master/oneflow.html#oneflow.env.get_rank">get_rank</a> to get the current device number and distribute the data to the device.</li>
-</ul>
-<p>Then use <code>launcher</code> to run the script, leave everything else to OneFlow, which makes distributed training as simple as stand-alone single-card training:</p>
-<div class="highlight"><pre><span></span><code><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">oneflow</span><span class="o">.</span><span class="n">distributed</span><span class="o">.</span><span class="n">launch</span> <span class="o">--</span><span class="n">nproc_per_node</span> <span class="mi">2</span> <span class="o">./</span><span class="n">ddp_train</span><span class="o">.</span><span class="n">py</span>
-</code></pre></div>
-<h3 id="distributedsampler">DistributedSampler<a class="headerlink" href="#distributedsampler" title="Permanent link">&para;</a></h3>
-<p>The data used is manually distributed in this context to highlight <code>DistributedDataParallel</code>. However, in practical applications, you can directly use <a href="https://oneflow.readthedocs.io/en/master/utils.html#oneflow.utils.data.distributed.DistributedSampler">DistributedSampler</a> with data parallel.</p>
-<p><code>DistributedSampler</code> will instantiate the Dataloader in each process, and each Dataloader instance will load a part of the complete data to automatically complete the data distribution.</p>
+Here, the parameter <code>nproc_ per_ node</code> is assigned as 4 to create four processes, simulating a total of 4 GPUs. For detailed usage of this module, please read: <a href="04_launch.html">DISTRIBUTED TRAINING LAUNCHER</a>.</p>
                 
               
               
@@ -987,7 +962,7 @@ w:tensor([[2.0000],
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="04_launch.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Distributed Training Launcher" rel="prev">
+        <a href="03_consistent_tensor.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Global Tensor" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -996,20 +971,20 @@ w:tensor([[2.0000],
               <span class="md-footer__direction">
                 Previous
               </span>
-              Distributed Training Launcher
+              Global Tensor
             </div>
           </div>
         </a>
       
       
         
-        <a href="06_pipeline.html" class="md-footer__link md-footer__link--next" aria-label="Next: Pipelining Parallelism" rel="next">
+        <a href="04_launch.html" class="md-footer__link md-footer__link--next" aria-label="Next: Distributed Training Launcher" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Pipelining Parallelism
+              Distributed Training Launcher
             </div>
           </div>
           <div class="md-footer__button md-icon">
