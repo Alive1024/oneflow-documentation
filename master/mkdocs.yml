@@ -1,0 +1,139 @@
+
+site_name: OneFlow
+site_url: https://docs.oneflow.org/
+site_description: >-
+  OneFlow -- 极致性能的分布式机器学习框架
+# Repository
+repo_name: OneFlow
+repo_url: https://github.com/OneFlow-Inc/oneflow-documentation
+edit_uri: "blob/master/cn/docs/"
+
+# Copyright
+copyright: Copyright &copy; 2017 - 2021 OneFlow
+
+#website/xxx.html style
+use_directory_urls: false
+
+# Configuration
+theme:
+  name: material
+  custom_dir: 'overrides/'
+
+  # 404 page
+  static_templates:
+    - 404.html
+
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.top
+    #- instant
+  palette:
+    scheme: default
+    primary: indigo
+    accent: indigo
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    logo: logo
+  favicon: assets/favicon.png
+
+# Plugins
+plugins:
+  - search
+extra:
+  version:
+    provider: mike
+  alternate:
+    #Switch to English
+    - name: English
+      link: https://docs.oneflow.org/en
+      lang: en
+
+    # Switch to Chinese
+    - name: 中文
+      link: https://docs.oneflow.org
+      lang: zh
+
+  #disqus: livere_indeed
+
+# Extensions
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.attr_list
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  # - pymdownx.highlight:
+  #     linenums_style: pymdownx-inline
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+    - 首页: index.md
+
+    - 基础专题:
+      - 快速上手: basics/01_quickstart.md
+      - Tensor: basics/02_tensor.md
+      - Dataset 与 DataLoader: basics/03_dataset_dataloader.md
+      - 搭建神经网络: basics/04_build_network.md
+      - Autograd: basics/05_autograd.md
+      - 反向传播与 optimizer: basics/06_optimization.md
+      - 模型的加载与保存: basics/07_model_load_save.md
+      - 静态图模块 nn.Graph: basics/08_nn_graph.md
+
+    - 分布式训练:
+      - 常见的分布式并行策略: parallelism/01_introduction.md
+      - 集群的全局视角: parallelism/02_sbp.md
+      - Global Tensor: parallelism/03_consistent_tensor.md
+      - 2D SBP: parallelism/04_2d-sbp.md
+      - 用 launch 模块启动分布式训练: parallelism/04_launch.md
+      - 数据并行训练: parallelism/05_ddp.md
+      - 流水并行训练: parallelism/06_pipeline.md
+
+    - OneFlow Cookies:
+      - OneFlow 与 ONNX 交互: cookies/oneflow2onnnx.md
+      - 模型部署: cookies/serving.md
+      - 自动混合精度训练: cookies/amp.md
+      - Activation Checkpointing: cookies/activation_checkpointing.md
+
+    - API:
+      - API: https://start.oneflow.org/oneflow-api-cn/
