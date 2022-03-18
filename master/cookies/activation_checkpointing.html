@@ -11,14 +11,14 @@
       
       
       
-        <link rel="canonical" href="https://docs.oneflow.org/parallelism/04_launch.html">
+        <link rel="canonical" href="https://docs.oneflow.org/cookies/activation_checkpointing.html">
       
       <link rel="icon" href="../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.11">
     
     
       
-        <title>用 launch 模块启动分布式训练 - OneFlow</title>
+        <title>Activation Checkpointing - OneFlow</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#launch" class="md-skip">
+        <a href="#activation-checkpointing" class="md-skip">
           跳转至
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              用 launch 模块启动分布式训练
+              Activation Checkpointing
             
           </span>
         </div>
@@ -227,15 +227,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="01_introduction.html" class="md-tabs__link md-tabs__link--active">
+      <a href="../parallelism/01_introduction.html" class="md-tabs__link">
         分布式训练
       </a>
     </li>
@@ -245,13 +243,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../cookies/oneflow2onnnx.html" class="md-tabs__link">
+      <a href="oneflow2onnnx.html" class="md-tabs__link md-tabs__link--active">
         OneFlow Cookies
       </a>
     </li>
@@ -471,14 +471,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       <label class="md-nav__link" for="__nav_3">
         分布式训练
@@ -496,7 +494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01_introduction.html" class="md-nav__link">
+      <a href="../parallelism/01_introduction.html" class="md-nav__link">
         常见的分布式并行策略
       </a>
     </li>
@@ -508,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02_sbp.html" class="md-nav__link">
+      <a href="../parallelism/02_sbp.html" class="md-nav__link">
         集群的全局视角
       </a>
     </li>
@@ -520,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03_consistent_tensor.html" class="md-nav__link">
+      <a href="../parallelism/03_consistent_tensor.html" class="md-nav__link">
         Global Tensor
       </a>
     </li>
@@ -532,8 +530,112 @@
   
   
     <li class="md-nav__item">
-      <a href="04_2d-sbp.html" class="md-nav__link">
+      <a href="../parallelism/04_2d-sbp.html" class="md-nav__link">
         2D SBP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parallelism/04_launch.html" class="md-nav__link">
+        用 launch 模块启动分布式训练
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parallelism/05_ddp.html" class="md-nav__link">
+        数据并行训练
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parallelism/06_pipeline.html" class="md-nav__link">
+        流水并行训练
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        OneFlow Cookies
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="OneFlow Cookies" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          OneFlow Cookies
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="oneflow2onnnx.html" class="md-nav__link">
+        OneFlow 与 ONNX 交互
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="serving.html" class="md-nav__link">
+        模型部署
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="amp.html" class="md-nav__link">
+        自动混合精度训练
       </a>
     </li>
   
@@ -554,12 +656,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          用 launch 模块启动分布式训练
+          Activation Checkpointing
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="04_launch.html" class="md-nav__link md-nav__link--active">
-        用 launch 模块启动分布式训练
+      <a href="activation_checkpointing.html" class="md-nav__link md-nav__link--active">
+        Activation Checkpointing
       </a>
       
         
@@ -577,15 +679,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    常见选项说明
+  <a href="#activation-checkpointing_1" class="md-nav__link">
+    Activation Checkpointing 简介
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#launch_1" class="md-nav__link">
-    launch 模块与并行策略的关系
+  <a href="#activation-checkpointing_2" class="md-nav__link">
+    Activation Checkpointing 使用示例
   </a>
   
 </li>
@@ -594,108 +696,6 @@
   
 </nav>
       
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="05_ddp.html" class="md-nav__link">
-        数据并行训练
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="06_pipeline.html" class="md-nav__link">
-        流水并行训练
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
-      
-      <label class="md-nav__link" for="__nav_4">
-        OneFlow Cookies
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="OneFlow Cookies" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
-          OneFlow Cookies
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cookies/oneflow2onnnx.html" class="md-nav__link">
-        OneFlow 与 ONNX 交互
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cookies/serving.html" class="md-nav__link">
-        模型部署
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cookies/amp.html" class="md-nav__link">
-        自动混合精度训练
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cookies/activation_checkpointing.html" class="md-nav__link">
-        Activation Checkpointing
-      </a>
     </li>
   
 
@@ -774,15 +774,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    常见选项说明
+  <a href="#activation-checkpointing_1" class="md-nav__link">
+    Activation Checkpointing 简介
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#launch_1" class="md-nav__link">
-    launch 模块与并行策略的关系
+  <a href="#activation-checkpointing_2" class="md-nav__link">
+    Activation Checkpointing 使用示例
   </a>
   
 </li>
@@ -799,50 +799,57 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/OneFlow-Inc/oneflow-documentation/blob/master/cn/docs/parallelism/04_launch.md" title="编辑此页" class="md-content__button md-icon">
+                  <a href="https://github.com/OneFlow-Inc/oneflow-documentation/blob/master/cn/docs/cookies/activation_checkpointing.md" title="编辑此页" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="launch">用 launch 模块启动分布式训练<a class="headerlink" href="#launch" title="Permanent link">&para;</a></h1>
-<p>OneFlow 提供了 <code>oneflow.distributed.launch</code> 模块帮助用户更方便地启动分布式训练。</p>
-<p>用户可以借助以下的形式，启动分布式训练：</p>
-<div class="highlight"><pre><span></span><code>python3 -m oneflow.distributed.launch <span class="o">[</span>启动选项<span class="o">]</span> 训练脚本.py
-</code></pre></div>
-<p>比如，启动单机两卡的训练：</p>
-<div class="highlight"><pre><span></span><code>python3 -m oneflow.distributed.launch --nproc_per_node <span class="m">2</span> ./script.py
-</code></pre></div>
-<p>再比如，启动两台机器，每台机器有两张显卡的训练。</p>
-<p>在0号机器上运行：</p>
-<div class="highlight"><pre><span></span><code>python3 -m oneflow.distributed.launch <span class="se">\</span>
-    --nnodes<span class="o">=</span><span class="m">2</span> <span class="se">\</span>
-    --node_rank<span class="o">=</span><span class="m">0</span> <span class="se">\</span>
-    --nproc_per_node<span class="o">=</span><span class="m">2</span> <span class="se">\</span>
-    --master_addr<span class="o">=</span><span class="s2">&quot;192.168.1.1&quot;</span> <span class="se">\</span>
-    --master_port<span class="o">=</span><span class="m">7788</span> <span class="se">\</span>
-    script.py
-</code></pre></div>
-<p>在1号机器上运行：</p>
-<div class="highlight"><pre><span></span><code>python3 -m oneflow.distributed.launch <span class="se">\</span>
-    --nnodes<span class="o">=</span><span class="m">2</span> <span class="se">\</span>
-    --node_rank<span class="o">=</span><span class="m">1</span> <span class="se">\</span>
-    --nproc_per_node<span class="o">=</span><span class="m">2</span> <span class="se">\</span>
-    --master_addr<span class="o">=</span><span class="s2">&quot;192.168.1.1&quot;</span> <span class="se">\</span>
-    --master_port<span class="o">=</span><span class="m">7788</span> <span class="se">\</span>
-    script.py
-</code></pre></div>
-<h2 id="_1">常见选项说明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>通过 <code>python3 -m oneflow.distributed.launch -h</code> 可以查看 <code>launch</code> 模块的选项说明，以下是部分常见选项。</p>
-<ul>
-<li><code>--nnodes</code>：机器的数目(number of nodes)</li>
-<li><code>--node_rank</code>： 机器的编号，从0开始</li>
-<li><code>--nproc_per_node</code>：每台机器上要启动的进程数目(number of processes per node)，推荐与 GPU 数目一致</li>
-<li><code>--logdir</code>：子进程日志的相对存储路径</li>
-</ul>
-<h2 id="launch_1">launch 模块与并行策略的关系<a class="headerlink" href="#launch_1" title="Permanent link">&para;</a></h2>
-<p>注意 <code>oneflow.distributed.launch</code> 的主要作用，是待用户完成分布式程序后，让用户可以更方便地启动分布式训练。它省去了配置集群中<a href="03_consistent_tensor.html#_5">环境变量</a> 的繁琐。</p>
-<p>但是 <code>oneflow.distributed.launch</code> <strong>并不决定</strong> <a href="01_introduction.html">并行策略</a>，并行策略是由设置数据、模型的分发方式、在物理设备上的放置位置决定的。</p>
-<p>OneFlow 提供的 <a href="02_sbp.html">全局视角</a> 和 <a href="03_consistent_tensor.html">Global Tensor</a> 可以灵活地配置并行策略。并且针对数据并行，OneFlow 提供了 <a href="05_ddp.html">DistributedDataParallel</a> 模块，可以在极少修改代码的前提下，将单机单卡的脚本改为数据并行的脚本。</p>
+                <h1 id="activation-checkpointing">Activation Checkpointing<a class="headerlink" href="#activation-checkpointing" title="Permanent link">&para;</a></h1>
+<h2 id="activation-checkpointing_1">Activation Checkpointing 简介<a class="headerlink" href="#activation-checkpointing_1" title="Permanent link">&para;</a></h2>
+<p>Activation Checkpointing 是陈天奇团队于 2016 年在论文 <a href="https://arxiv.org/abs/1604.06174">Training Deep Nets with Sublinear Memory Cost</a> 中提出的一种亚线性内存优化技术，旨在减少深度学习模型训练过程中的中间激活 (activation) 带来的显存占用。Activation Checkpointing 的基本原理是 <strong>以时间换空间</strong>，经过计算图分析后，前向过程中一些暂时用不到的中间激活特征将被删除以减少显存占用，后向过程中需要时再借助额外的前向计算恢复它们。</p>
+<h2 id="activation-checkpointing_2">Activation Checkpointing 使用示例<a class="headerlink" href="#activation-checkpointing_2" title="Permanent link">&para;</a></h2>
+<p>首先，我们定义一个简单的模型、损失函数及优化器，和以往的用法完全相同。
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
+<span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="n">DEVICE</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">flow</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Using </span><span class="si">{}</span><span class="s2"> device&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">))</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span> 
+    <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+
+<span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+</code></pre></div></p>
+<p>如果要开启 activation checkpointing，只需在 <a href="../basics/08_nn_graph.html">Graph</a> 模型中的 Eager 模型成员上指定 <code>.config.activation_checkpointing = True</code>（如果 Graph 模型包含多个 Eager 模型成员，则需要在每个 Eager 模型成员上以这种方式指定），此 API 详见：<a href="https://oneflow.readthedocs.io/en/master/graph.html#oneflow.nn.graph.block_config.BlockConfig.activation_checkpointing">activation_checkpointing</a>。
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">CustomGraph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">activation_checkpointing</span> <span class="o">=</span> <span class="kc">True</span>   <span class="c1"># 开启 activation checkpointing</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loss_fn</span> <span class="o">=</span> <span class="n">loss_fn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_optimizer</span><span class="p">(</span><span class="n">optimizer</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss_fn</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">y_pred</span>
+</code></pre></div></p>
+<p>然后，像以往那样开始训练等操作即可。
+<div class="highlight"><pre><span></span><code><span class="n">graph_model</span> <span class="o">=</span> <span class="n">CustomGraph</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+
+    <span class="n">graph_model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div></p>
                 
               
               
@@ -867,7 +874,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="04_2d-sbp.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 2D SBP" rel="prev">
+        <a href="amp.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 自动混合精度训练" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -876,26 +883,11 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              2D SBP
+              自动混合精度训练
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="05_ddp.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 数据并行训练" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              数据并行训练
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   

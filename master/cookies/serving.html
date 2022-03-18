@@ -710,6 +710,30 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="amp.html" class="md-nav__link">
+        自动混合精度训练
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="activation_checkpointing.html" class="md-nav__link">
+        Activation Checkpointing
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -859,7 +883,7 @@
 <li>OneFlow 从训练到部署流程解析</li>
 </ul>
 <h2 id="oneflow">OneFlow 部署快速上手<a class="headerlink" href="#oneflow" title="Permanent link">&para;</a></h2>
-<p>OneFlow Cloud 上准备了一个 <a href="https://oneflow.cloud/#/project/public/code?id=7fc904d8dbe0069820da5d6d32a764fe">OneFlow Serving: Neural Style Transfer</a> 项目，参照项目说明用户可以一键部署项目，并且查看项目运行效果。</p>
+<p>OneFlow Cloud 上准备了一个 <a href="https://oneflow.cloud/drill/#/project/public/code?id=7fc904d8dbe0069820da5d6d32a764fe">OneFlow Serving: Neural Style Transfer</a> 项目，参照项目说明用户可以一键部署项目，并且查看项目运行效果。</p>
 <p><img alt="" src="imgs/oneflow-serving-demo.png" /></p>
 <p>分析项目代码可以发现，有以下几个关键处：</p>
 <ul>
@@ -998,7 +1022,7 @@ output [
 <blockquote>
 <p>实际上，客户端可以通过 <a href="https://github.com/triton-inference-server/server/blob/main/docs/inference_protocols.md">HTTP、gRPC 或者 C API 等多种方式</a> 与 Triton Server 交互，具体内容可以参阅以上文档。</p>
 </blockquote>
-<p>以下代码，是图片进行风格化的核心部分，可以将命令行传递来的图片文件，进行风格化。完整代码可以在 <a href="https://oneflow.cloud/#/project/public/code?id=2eec2f768cdfe5709dc4c01e389fd65c">云平台</a> 上查看，或者下载 <a href="https://oneflow-public.oss-cn-beijing.aliyuncs.com/oneflow-documentation/serving/demo.zip">demo.zip</a></p>
+<p>以下代码，是图片进行风格化的核心部分，可以将命令行传递来的图片文件，进行风格化。完整代码可以在 <a href="https://oneflow.cloud/drill/#/project/public/code?id=7fc904d8dbe0069820da5d6d32a764fe">云平台</a> 上查看，或者下载 <a href="https://oneflow-public.oss-cn-beijing.aliyuncs.com/oneflow-documentation/serving/demo.zip">demo.zip</a></p>
 <div class="highlight"><pre><span></span><code><span class="c1">#...</span>
 <span class="kn">import</span> <span class="nn">tritonclient.http</span> <span class="k">as</span> <span class="nn">httpclient</span>
 
@@ -1080,6 +1104,21 @@ $ python infer.py --image cat.jpg
           </div>
         </a>
       
+      
+        
+        <a href="amp.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 自动混合精度训练" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              自动混合精度训练
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   
