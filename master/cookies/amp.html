@@ -252,7 +252,7 @@
   
     <li class="md-tabs__item">
       <a href="oneflow2onnnx.html" class="md-tabs__link md-tabs__link--active">
-        OneFlow Cookies
+        实践指南
       </a>
     </li>
   
@@ -595,13 +595,13 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       <label class="md-nav__link" for="__nav_4">
-        OneFlow Cookies
+        实践指南
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="OneFlow Cookies" data-md-level="1">
+      <nav class="md-nav" aria-label="实践指南" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
-          OneFlow Cookies
+          实践指南
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -676,6 +676,13 @@
         <li class="md-nav__item">
   <a href="#amp_1" class="md-nav__link">
     AMP 使用示例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gradient-scaling" class="md-nav__link">
+    Gradient Scaling
   </a>
   
 </li>
@@ -787,6 +794,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#gradient-scaling" class="md-nav__link">
+    Gradient Scaling
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -808,7 +822,7 @@
 <h2 id="amp">AMP 简介<a class="headerlink" href="#amp" title="Permanent link">&para;</a></h2>
 <p>当我们在训练深度学习模型时，通常情况下使用的是 32 位单精度浮点数 (FP32)，而 <strong>自动混合精度 (Automatic Mixed Precision, AMP)</strong> 是一种允许在训练模型时同时使用 FP32 和 FP16 的技术。这样可以使得训练模型时的内存占用更少、计算更快，但由于 FP16 的数值范围比 FP32 小，因此更容易出现数值溢出的问题，同时可能存在一定误差。但大量实践证明，很多深度学习模型可以用这种技术来训练，并且没有精度损失。</p>
 <h2 id="amp_1">AMP 使用示例<a class="headerlink" href="#amp_1" title="Permanent link">&para;</a></h2>
-<p>首先，我们定义一个简单的模型、损失函数及优化器，和以往的用法完全相同。
+<p>首先，我们定义一个简单的模型、损失函数及优化器，和以往的用法完全相同。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
 <span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 
@@ -825,8 +839,8 @@
 
 <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
 <span class="n">optimizer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
-</code></pre></div></p>
-<p>如果要开启 AMP 模式，只需在 <a href="../basics/08_nn_graph.html">Graph</a> 模型中添加 <code>self.config.enable_amp(True)</code>，此 API 详见： <a href="https://oneflow.readthedocs.io/en/master/graph.html#oneflow.nn.graph.graph_config.GraphConfig.enable_amp">enable_amp</a>。</p>
+</code></pre></div>
+<p>如果要开启 AMP 模式，只需在 <a href="../basics/08_nn_graph.html">nn.Graph</a> 模型中添加 <code>self.config.enable_amp(True)</code>，此 API 详见： <a href="https://oneflow.readthedocs.io/en/master/graph.html#oneflow.nn.graph.graph_config.GraphConfig.enable_amp">enable_amp</a>。</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">CustomGraph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -841,7 +855,7 @@
         <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">y_pred</span>
 </code></pre></div>
-<p>然后，像以往那样开始训练等操作即可。
+<p>然后，像以往那样开始训练等操作即可。</p>
 <div class="highlight"><pre><span></span><code><span class="n">graph_model</span> <span class="o">=</span> <span class="n">CustomGraph</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
@@ -849,7 +863,28 @@
     <span class="n">y</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
 
     <span class="n">graph_model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</code></pre></div></p>
+</code></pre></div>
+<h2 id="gradient-scaling">Gradient Scaling<a class="headerlink" href="#gradient-scaling" title="Permanent link">&para;</a></h2>
+<p><strong>Gradient Scaling (梯度缩放)</strong> 是一种用于解决 FP16 易导致数值溢出问题的方法，其基本原理是在反向传播的过程中使用一个 scale factor 对损失和梯度进行缩放，以改变其数值的量级，从而尽可能缓解数值溢出问题。</p>
+<p>OneFlow 提供了 GradScaler 来在 AMP 模式下使用 Gradient Scaling，只需要在 nn.Graph 模型的 <code>__init__</code> 方法中实例化一个 GradScaler 对象，然后通过 <a href="https://oneflow.readthedocs.io/en/master/graph.html#oneflow.nn.Graph.set_grad_scaler">set_grad_scaler</a> 接口进行指定即可，nn.Graph 将会自动管理 Gradient Scaling 的整个过程。以上文中的 <code>CustomGraph</code> 为例，我们需要在其 <code>__init__</code> 方法中添加：</p>
+<div class="highlight"><pre><span></span><code><span class="n">grad_scaler</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">amp</span><span class="o">.</span><span class="n">GradScaler</span><span class="p">(</span>
+    <span class="n">init_scale</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span>
+    <span class="n">growth_factor</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+    <span class="n">backoff_factor</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">growth_interval</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">set_grad_scaler</span><span class="p">(</span><span class="n">grad_scaler</span><span class="p">)</span>
+</code></pre></div>
+<p>scale factor 的计算过程以及 GradScaler 的参数的含义如下：</p>
+<p>scale factor 的大小在迭代更新中动态估计（初始值由 <code>init_scale</code> 指定），为了尽可能减少数值下溢 (underflow)，scale factor 应该更大；但如果太大，FP16 又容易发生数值上溢 (overflow)，导致出现 inf 或 NaN。动态估计的过程就是在不出现 inf 或 NaN 的情况下，尽可能增大 scale factor。在每次迭代中，都会检查是否有 inf 或 NaN 的梯度出现：</p>
+<ol>
+<li>
+<p>如果有：此次权重更新将被忽略，并且 scale factor 将会减小（乘上 <code>backoff_factor</code>）</p>
+</li>
+<li>
+<p>如果没有：权重正常更新，当连续多次迭代中（由 <code>growth_interval</code> 指定）没有出现 inf 或 NaN，则 scale factor 将会增大（乘上 <code>growth_factor</code>）</p>
+</li>
+</ol>
                 
               
               

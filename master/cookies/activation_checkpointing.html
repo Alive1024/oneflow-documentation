@@ -252,7 +252,7 @@
   
     <li class="md-tabs__item">
       <a href="oneflow2onnnx.html" class="md-tabs__link md-tabs__link--active">
-        OneFlow Cookies
+        实践指南
       </a>
     </li>
   
@@ -595,13 +595,13 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       <label class="md-nav__link" for="__nav_4">
-        OneFlow Cookies
+        实践指南
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="OneFlow Cookies" data-md-level="1">
+      <nav class="md-nav" aria-label="实践指南" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
-          OneFlow Cookies
+          实践指南
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -807,9 +807,9 @@
                 <h1 id="activation-checkpointing">Activation Checkpointing<a class="headerlink" href="#activation-checkpointing" title="Permanent link">&para;</a></h1>
 <h2 id="activation-checkpointing_1">Activation Checkpointing 简介<a class="headerlink" href="#activation-checkpointing_1" title="Permanent link">&para;</a></h2>
 <p>Activation Checkpointing 是陈天奇团队于 2016 年在论文 <a href="https://arxiv.org/abs/1604.06174">Training Deep Nets with Sublinear Memory Cost</a> 中提出的一种亚线性内存优化技术，旨在减少训练过程中的显存占用。Activation Checkpointing 的基本原理是 <strong>以时间换空间</strong> ：经过计算图分析后，前向过程中一些暂时用不到的中间激活特征将被删除以减少显存占用，后向过程中需要时再借助额外的前向计算恢复它们。</p>
-<p>OneFlow 已经支持 Activation Checkpointing，本文介绍如何在训练中开启它。</p>
+<p>OneFlow 的静态图模块 <code>nn.Graph</code> 已经支持 Activation Checkpointing，本文将介绍如何在训练中开启它。</p>
 <h2 id="activation-checkpointing_2">Activation Checkpointing 使用示例<a class="headerlink" href="#activation-checkpointing_2" title="Permanent link">&para;</a></h2>
-<p>首先，我们定义一个简单的模型（由两部分组成）、损失函数及优化器，和以往的用法完全相同。
+<p>首先，我们定义一个简单的模型（由两部分组成）、损失函数及优化器，和以往的用法完全相同。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
 <span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 
@@ -837,8 +837,8 @@
 <span class="n">optimizer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">([{</span><span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">model_part1</span><span class="o">.</span><span class="n">parameters</span><span class="p">()},</span>
                             <span class="p">{</span><span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">model_part2</span><span class="o">.</span><span class="n">parameters</span><span class="p">()}],</span>
                            <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
-</code></pre></div></p>
-<p>如果要开启 activation checkpointing，只需在 <a href="../basics/08_nn_graph.html">Graph</a> 模型中的 Eager 模型成员 (即 nn.Module 对象) 上指定 <code>.config.activation_checkpointing = True</code>。此 API 详见：<a href="https://oneflow.readthedocs.io/en/master/graph.html#oneflow.nn.graph.block_config.BlockConfig.activation_checkpointing">activation_checkpointing</a>。
+</code></pre></div>
+<p>如果要开启 activation checkpointing，只需在 <a href="../basics/08_nn_graph.html">nn.Graph</a> 模型中的 Eager 模型成员 (即 nn.Module 对象) 上指定 <code>.config.activation_checkpointing = True</code>。此 API 详见：<a href="https://oneflow.readthedocs.io/en/master/graph.html#oneflow.nn.graph.block_config.BlockConfig.activation_checkpointing">activation_checkpointing</a>。对于每个打开 "activation checkpointing" 的 nn.Module，其输入 activation 将会被保留，而其它中间 activation 在反向传播过程中被使用时会被重新计算。</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">CustomGraph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -855,8 +855,8 @@
         <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss_fn</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
         <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">loss</span>
-</code></pre></div></p>
-<p>然后，像以往那样开始训练等操作即可。
+</code></pre></div>
+<p>然后，像以往那样开始训练等操作即可。</p>
 <div class="highlight"><pre><span></span><code><span class="n">graph_model</span> <span class="o">=</span> <span class="n">CustomGraph</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
@@ -864,7 +864,7 @@
     <span class="n">y</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
     <span class="n">graph_model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="c1"># 其他代码...</span>
-</code></pre></div></p>
+</code></pre></div>
                 
               
               
