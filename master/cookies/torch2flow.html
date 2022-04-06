@@ -11,19 +11,21 @@
       
       
       
-      <link rel="icon" href="/assets/favicon.png">
+        <link rel="canonical" href="https://docs.oneflow.org/cookies/torch2flow.html">
+      
+      <link rel="icon" href="../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.11">
     
     
       
-        <title>OneFlow</title>
+        <title>将 PyTorch 预训练模型转为 OneFlow 格式 - OneFlow</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.3754935a.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.3754935a.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
         
           
           
@@ -59,12 +61,17 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
-    <script>function __prefix(e){return new URL("/",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#pytorch-oneflow" class="md-skip">
+          跳转至
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -73,7 +80,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/index.html" title="OneFlow" class="md-header__button md-logo" aria-label="OneFlow" data-md-component="logo">
+    <a href="../index.html" title="OneFlow" class="md-header__button md-logo" aria-label="OneFlow" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
@@ -97,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              将 PyTorch 预训练模型转为 OneFlow 格式
             
           </span>
         </div>
@@ -195,7 +202,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="/index.html" class="md-tabs__link">
+    <a href="../index.html" class="md-tabs__link">
       首页
     </a>
   </li>
@@ -210,7 +217,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/basics/01_quickstart.html" class="md-tabs__link">
+      <a href="../basics/01_quickstart.html" class="md-tabs__link">
         基础专题
       </a>
     </li>
@@ -226,7 +233,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/parallelism/01_introduction.html" class="md-tabs__link">
+      <a href="../parallelism/01_introduction.html" class="md-tabs__link">
         分布式训练
       </a>
     </li>
@@ -236,13 +243,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="/cookies/oneflow2onnnx.html" class="md-tabs__link">
+      <a href="oneflow2onnnx.html" class="md-tabs__link md-tabs__link--active">
         实践指南
       </a>
     </li>
@@ -285,7 +294,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/index.html" title="OneFlow" class="md-nav__button md-logo" aria-label="OneFlow" data-md-component="logo">
+    <a href="../index.html" title="OneFlow" class="md-nav__button md-logo" aria-label="OneFlow" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
@@ -323,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/index.html" class="md-nav__link">
+      <a href="../index.html" class="md-nav__link">
         首页
       </a>
     </li>
@@ -359,7 +368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/basics/01_quickstart.html" class="md-nav__link">
+      <a href="../basics/01_quickstart.html" class="md-nav__link">
         快速上手
       </a>
     </li>
@@ -371,7 +380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/basics/02_tensor.html" class="md-nav__link">
+      <a href="../basics/02_tensor.html" class="md-nav__link">
         Tensor
       </a>
     </li>
@@ -383,7 +392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/basics/03_dataset_dataloader.html" class="md-nav__link">
+      <a href="../basics/03_dataset_dataloader.html" class="md-nav__link">
         Dataset 与 DataLoader
       </a>
     </li>
@@ -395,7 +404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/basics/04_build_network.html" class="md-nav__link">
+      <a href="../basics/04_build_network.html" class="md-nav__link">
         搭建神经网络
       </a>
     </li>
@@ -407,7 +416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/basics/05_autograd.html" class="md-nav__link">
+      <a href="../basics/05_autograd.html" class="md-nav__link">
         Autograd
       </a>
     </li>
@@ -419,7 +428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/basics/06_optimization.html" class="md-nav__link">
+      <a href="../basics/06_optimization.html" class="md-nav__link">
         反向传播与 optimizer
       </a>
     </li>
@@ -431,7 +440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/basics/07_model_load_save.html" class="md-nav__link">
+      <a href="../basics/07_model_load_save.html" class="md-nav__link">
         模型的加载与保存
       </a>
     </li>
@@ -443,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/basics/08_nn_graph.html" class="md-nav__link">
+      <a href="../basics/08_nn_graph.html" class="md-nav__link">
         静态图模块 nn.Graph
       </a>
     </li>
@@ -485,7 +494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/parallelism/01_introduction.html" class="md-nav__link">
+      <a href="../parallelism/01_introduction.html" class="md-nav__link">
         常见的分布式并行策略
       </a>
     </li>
@@ -497,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/parallelism/02_sbp.html" class="md-nav__link">
+      <a href="../parallelism/02_sbp.html" class="md-nav__link">
         集群的全局视角
       </a>
     </li>
@@ -509,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/parallelism/03_consistent_tensor.html" class="md-nav__link">
+      <a href="../parallelism/03_consistent_tensor.html" class="md-nav__link">
         Global Tensor
       </a>
     </li>
@@ -521,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/parallelism/04_2d-sbp.html" class="md-nav__link">
+      <a href="../parallelism/04_2d-sbp.html" class="md-nav__link">
         2D SBP
       </a>
     </li>
@@ -533,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/parallelism/04_launch.html" class="md-nav__link">
+      <a href="../parallelism/04_launch.html" class="md-nav__link">
         用 launch 模块启动分布式训练
       </a>
     </li>
@@ -545,7 +554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/parallelism/05_ddp.html" class="md-nav__link">
+      <a href="../parallelism/05_ddp.html" class="md-nav__link">
         数据并行训练
       </a>
     </li>
@@ -557,7 +566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/parallelism/06_pipeline.html" class="md-nav__link">
+      <a href="../parallelism/06_pipeline.html" class="md-nav__link">
         流水并行训练
       </a>
     </li>
@@ -576,12 +585,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       <label class="md-nav__link" for="__nav_4">
         实践指南
@@ -599,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/cookies/oneflow2onnnx.html" class="md-nav__link">
+      <a href="oneflow2onnnx.html" class="md-nav__link">
         OneFlow 与 ONNX 交互
       </a>
     </li>
@@ -611,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/cookies/serving.html" class="md-nav__link">
+      <a href="serving.html" class="md-nav__link">
         模型部署
       </a>
     </li>
@@ -621,11 +632,58 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="/cookies/torch2flow.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          将 PyTorch 预训练模型转为 OneFlow 格式
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="torch2flow.html" class="md-nav__link md-nav__link--active">
         将 PyTorch 预训练模型转为 OneFlow 格式
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    转换示例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    拓展
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -635,7 +693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/cookies/transfer_learning.html" class="md-nav__link">
+      <a href="transfer_learning.html" class="md-nav__link">
         计算机视觉迁移学习
       </a>
     </li>
@@ -697,11 +755,120 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    转换示例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    拓展
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
+                  <a href="https://github.com/OneFlow-Inc/oneflow-documentation/blob/master/cn/docs/cookies/torch2flow.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="pytorch-oneflow">将 PyTorch 预训练模型转为 OneFlow 格式<a class="headerlink" href="#pytorch-oneflow" title="Permanent link">&para;</a></h1>
+<p>当需要使用 PyTorch 的预训练模型时，可以利用 OneFlow 与 PyTorch 模型接口对齐的特点，将 PyTorch 预训练模型，转存为 OneFlow 模型。</p>
+<h2 id="_1">转换示例<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>我们将定义一个 PyTorch 模型并保存，然后展示如何将其转换成 OneFlow 模型。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="n">save_file</span> <span class="o">=</span> <span class="s1">&#39;model.pth&#39;</span>
+
+<span class="n">model_torch</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> 
+    <span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">save_file</span><span class="p">)</span>
+</code></pre></div>
+<p>运行以上代码，将得到 PyTorch 模型文件 <code>model.pth</code> 。将它转为 OneFlow 版本的模型包括两个主要步骤：</p>
+<ul>
+<li>定义一个具有 <strong>相同结构</strong> 的 OneFlow 模型</li>
+<li>加载 PyTorch 存储的模型文件 <code>model.pth</code>，并将模型参数初始化到 OneFlow 版本的模型中</li>
+</ul>
+<p>转换代码如下：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
+<span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">model_flow</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> 
+    <span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">save_file</span><span class="p">)</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">parameters</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+
+<span class="n">model_flow</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+</code></pre></div>
+<p>通过 <code>.state_dict()</code> 获取到以 <code>key-value</code> 形式存储的模型参数后， <code>.detach().cpu().numpy()</code> 将梯度阻断后的参数值转换成 Numpy 类型，最后 <code>.load_state_dict(parameters)</code> 将模型参数传递到 OneFlow 模型中。</p>
+<p>通过上述简单示例，我们可以发现将 PyTorch 存储的数据（无论是模型还是变量等等）转换成 OneFlow 的思路是 <strong>使用 Numpy 作为二者的媒介</strong>。只要确保 PyTorch 和 OneFlow 定义的模型是一致的，那么无论多么复杂的模型都可以通过上述方式转换。</p>
+<h2 id="_2">拓展<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/Oneflow-Inc/vision">flowvision</a> 与 torchvision 相同，提供了许多预训练好的模型，同时 flowvision 各个模型能够做到与 torchvision 对齐。我们使用 flowvision，以经典的 AlexNet 为例，看看如何将 PyTorch 中 <strong>复杂的预训练模型</strong> 转换成 OneFlow 版本。转换代码如下所示：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torchvision.models</span> <span class="k">as</span> <span class="nn">models_torch</span>
+<span class="kn">import</span> <span class="nn">flowvision.models</span> <span class="k">as</span> <span class="nn">models_flow</span>
+
+<span class="n">alexnet_torch</span> <span class="o">=</span> <span class="n">models_torch</span><span class="o">.</span><span class="n">alexnet</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">alexnet_flow</span> <span class="o">=</span> <span class="n">models_flow</span><span class="o">.</span><span class="n">alexnet</span><span class="p">()</span>
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="n">alexnet_torch</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">parameters</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+
+<span class="n">alexnet_flow</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+</code></pre></div>
+<p>flowvision 也配备了预训练模型，设置 <code>pretrained=True</code> 即可：</p>
+<div class="highlight"><pre><span></span><code><span class="n">alexnet_flow</span> <span class="o">=</span> <span class="n">models_flow</span><span class="o">.</span><span class="n">alexnet</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p>关于 flowvision 的详细使用，欢迎访问 <a href="https://flowvision.readthedocs.io/en/latest/index.html">flowvision documentation</a> 。</p>
+                
+              
+              
+                
+
 
               
             </article>
@@ -717,6 +884,41 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="serving.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 模型部署" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              模型部署
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="transfer_learning.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 计算机视觉迁移学习" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              计算机视觉迁移学习
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -741,12 +943,12 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "/", "features": ["navigation.tabs", "navigation.top"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "/assets/javascripts/workers/search.477d984a.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.477d984a.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      <script src="../assets/javascripts/bundle.ddd52ceb.min.js"></script>
       
-        <script src="/javascripts/config.js"></script>
+        <script src="../javascripts/config.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
