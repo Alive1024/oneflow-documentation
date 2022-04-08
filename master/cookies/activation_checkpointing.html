@@ -692,10 +692,29 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#bert" class="md-nav__link">
+    在 Bert 模型上的对比实验
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="torch2flow.html" class="md-nav__link">
+        将 PyTorch 预训练模型转为 OneFlow 格式
+      </a>
     </li>
   
 
@@ -787,6 +806,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#bert" class="md-nav__link">
+    在 Bert 模型上的对比实验
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -806,7 +832,20 @@
                 
                 <h1 id="activation-checkpointing">Activation Checkpointing<a class="headerlink" href="#activation-checkpointing" title="Permanent link">&para;</a></h1>
 <h2 id="activation-checkpointing_1">Activation Checkpointing 简介<a class="headerlink" href="#activation-checkpointing_1" title="Permanent link">&para;</a></h2>
-<p>Activation Checkpointing 是陈天奇团队于 2016 年在论文 <a href="https://arxiv.org/abs/1604.06174">Training Deep Nets with Sublinear Memory Cost</a> 中提出的一种亚线性内存优化技术，旨在减少训练过程中的显存占用。Activation Checkpointing 的基本原理是 <strong>以时间换空间</strong> ：经过计算图分析后，前向过程中一些暂时用不到的中间激活特征将被删除以减少显存占用，后向过程中需要时再借助额外的前向计算恢复它们。</p>
+<p>Activation Checkpointing 是陈天奇团队于 2016 年在论文 <a href="https://arxiv.org/abs/1604.06174">Training Deep Nets with Sublinear Memory Cost</a> 中提出的一种亚线性内存优化技术，旨在减少训练过程中的中间激活(activation)带来的显存占用。Activation Checkpointing 的基本原理是 <strong>以时间换空间</strong> ：经过计算图分析后，前向过程中一些暂时用不到的中间激活特征将被删除以减少显存占用，后向过程中需要时再借助额外的前向计算恢复它们。</p>
+<p>以一个 Transformer 网络为例，Activation Checkpointing 给计算图带来的变化如下图所示：</p>
+<div align="center">
+<img src="./imgs/Activation Checkpointing.jpg" alt="Activation Checkpointing"  width=60%>
+</div>
+
+<ol>
+<li>
+<p>上半部分为正常情况下的逻辑子图。T1、T2为 Transformer Layer 的前向计算部分、子图中每个 op 计算完成后得到的中间激活特征将持续占用内存，当计算进行到反向时（T1_grad、T2_grad），直接利用这些中间激活进行反向计算；</p>
+</li>
+<li>
+<p>下半部分为开启 Activation Checkpointing 后的逻辑子图，可以看到中间增加了虚线框住的部分，即用于重计算的 fake 子图，由于 fake 子图的存在，正常 forward 子图在进行前向时，就无须保存中间激活了，当反向计算需要用到时，再根据 fake 子图临时进行前向的重计算。 ​</p>
+</li>
+</ol>
 <p>OneFlow 的静态图模块 <code>nn.Graph</code> 已经支持 Activation Checkpointing，本文将介绍如何在训练中开启它。</p>
 <h2 id="activation-checkpointing_2">Activation Checkpointing 使用示例<a class="headerlink" href="#activation-checkpointing_2" title="Permanent link">&para;</a></h2>
 <p>首先，我们定义一个简单的模型（由两部分组成）、损失函数及优化器，和以往的用法完全相同。</p>
@@ -865,6 +904,35 @@
     <span class="n">graph_model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="c1"># 其他代码...</span>
 </code></pre></div>
+<h2 id="bert">在 Bert 模型上的对比实验<a class="headerlink" href="#bert" title="Permanent link">&para;</a></h2>
+<p>为了验证 Activation Checkpointing 的实际效果，我们可以在 <a href="https://arxiv.org/abs/1810.04805">Bert</a> 模型上进行对比实验。可以直接使用 <a href="https://github.com/Oneflow-Inc/libai">libai</a> 库提供的 Bert 模型，只需通过在配置文件中将 <code>train.activation_checkpoint.enabled</code> 设置为 <code>True</code> 就可以开启 Activation Checkpointing。</p>
+<p>首先，按照 <a href="https://libai.readthedocs.io/en/latest/tutorials/get_started/quick_run.html#prepare-the-data-and-the-vocab">Prepare the Data and the Vocab</a> 准备好数据。为简单起见，我们使用单卡训练（实验环境使用的 GPU 为 NVIDIA GeForce RTX 3090，显存大小为 24268 MB）：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">time</span> python tools/train_net.py --config-file configs/bert_large_pretrain.py
+</code></pre></div>
+<p>在命令最开头加上 <code>time</code> 命令来计量训练过程所耗费的时间。</p>
+<p>实验结果如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">是否开启 Activation Checkpointing</th>
+<th align="center">平均显存占用</th>
+<th align="center">训练完成所用时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">否</td>
+<td align="center">9141 MB</td>
+<td align="center">25 分 16 秒</td>
+</tr>
+<tr>
+<td align="center">是</td>
+<td align="center">5978 MB</td>
+<td align="center">33 分 36 秒</td>
+</tr>
+</tbody>
+</table>
+<p>从上表可以看出，Activation Checkpointing 显著减少了训练时的显存占用。同时，训练所用时间由于需要额外的前向计算而有所增加。总体来说，当缺乏显存时，Activation Checkpointing 不失为一种很有效的解决办法。</p>
                 
               
               
@@ -903,6 +971,21 @@
           </div>
         </a>
       
+      
+        
+        <a href="torch2flow.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 将 PyTorch 预训练模型转为 OneFlow 格式" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              将 PyTorch 预训练模型转为 OneFlow 格式
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   
