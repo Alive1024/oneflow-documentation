@@ -726,6 +726,26 @@
     ZeRO 使用示例
   </a>
   
+    <nav class="md-nav" aria-label="ZeRO 使用示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    定义数据并行训练流程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nngraph-zero" class="md-nav__link">
+    在 nn.Graph 中开启 ZeRO
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -821,6 +841,26 @@
     ZeRO 使用示例
   </a>
   
+    <nav class="md-nav" aria-label="ZeRO 使用示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    定义数据并行训练流程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nngraph-zero" class="md-nav__link">
+    在 nn.Graph 中开启 ZeRO
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -841,10 +881,6 @@
                 
                 
                 <h1 id="zero-redundancy-optimizer-zero">Zero Redundancy Optimizer (ZeRO)<a class="headerlink" href="#zero-redundancy-optimizer-zero" title="Permanent link">&para;</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>此教程中涉及的 ZeRO 相关的 API 未来可能会发生变动。</p>
-</div>
 <h2 id="zero">ZeRO 简介<a class="headerlink" href="#zero" title="Permanent link">&para;</a></h2>
 <p><strong>Zero Redundancy Optimizer (ZeRO)</strong> 是论文 <a href="https://arxiv.org/pdf/1910.02054.pdf">ZeRO: Memory Optimization Towards Training A Trillion Parameter Models</a> 提出的一种用于减少数据并行策略下的显存占用的方法。</p>
 <p>在普通的数据并行策略中，每个 GPU 都独立地维护一组完整的模型参数，计算与通信效率较高，但内存效率较差。这个问题在训练大型模型时尤为突出。ZeRO 由 ZeRO-DP 和 ZeRO-R 两部分组成，可以有效地减少显存消耗量，这意味着在同样的显存下，可以训练更大的模型，也意味着对于以往只能通过模型并行策略才能训练的大模型也有可能使用数据并行。</p>
@@ -861,15 +897,16 @@
 </ol>
 <p>三个阶段的显存消耗的分布情况可以参见下图（来自 ZeRO 原论文 Figure 1）：</p>
 <div align="center">
-<img src="./imgs/Three%20Stages%20of%20ZeRO-DP%20Optimizations.jpg" alt="Three Stages of ZeRO-DP Optimizations" width="75%">
+<img src="./imgs/Three_Stages_of_ZeRO-DP_Optimizations.jpg" alt="Three Stages of ZeRO-DP Optimizations" width="75%">
 </div>
 
-<p>ZeRO-R 则通过 activation checkpointing、设定恒定大小的缓冲区和动态内存碎片整理机制来优化残余状态的显存消耗。</p>
 <h2 id="zero_1">ZeRO 使用示例<a class="headerlink" href="#zero_1" title="Permanent link">&para;</a></h2>
 <p>首先导入 OneFlow：
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
 <span class="kn">from</span> <span class="nn">oneflow</span> <span class="kn">import</span> <span class="n">nn</span>
 </code></pre></div></p>
+<h3 id="_1">定义数据并行训练流程<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>我们定义一个数据并行策略下的训练流程，与 <a href="../parallelism/05_ddp.html#通过设置-sbp-做数据并行训练">通过设置 SBP 做数据并行训练</a> 中所介绍的是类似的。</p>
 <p>定义之后要使用到 placement、SBP 等：
 <div class="highlight"><pre><span></span><code><span class="n">P</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">broadcast</span>
@@ -915,10 +952,18 @@
     <span class="n">graph_model</span><span class="p">(</span><span class="n">global_x</span><span class="p">,</span> <span class="n">global_y</span><span class="p">)</span>
 </code></pre></div>
 <p>然后通过 <a href="../parallelism/04_launch.html">launch 模块</a> 启动训练即可。</p>
-<p><strong>在 nn.Graph 中开启 ZeRO 的方法如下</strong>：</p>
+<h3 id="nngraph-zero">在 nn.Graph 中开启 ZeRO<a class="headerlink" href="#nngraph-zero" title="Permanent link">&para;</a></h3>
 <p><strong>阶段 1</strong>：通过 <a href="https://oneflow.readthedocs.io/en/master/graph.html#oneflow.nn.graph.graph_config.GraphConfig.set_zero_redundancy_optimizer_mode">config.set_zero_redundancy_optimizer_mode</a> 接口可以开启阶段 1。即在上面的 nn.Graph 模型中添加：</p>
 <div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_zero_redundancy_optimizer_mode</span><span class="p">(</span><span class="s2">&quot;distributed_split&quot;</span><span class="p">)</span>
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>此 API 未来可能会发生变动。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>当使用模型连续进行训练和和预测时：训练执行一次后，ZeRO 会自动把模型的 SBP 参数从 Broadcast 改变为 Split；在执行预测时，将会使用 Split 自动推理，无需配置 ZeRO。</p>
+</div>
 <p><strong>阶段 2</strong>：在阶段 1 的基础上，增加 <code>flow.boxing.nccl.enable_use_compute_stream(True)</code> 可以开启阶段 2。即在上面的 nn.Graph 模型中添加：</p>
 <div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_zero_redundancy_optimizer_mode</span><span class="p">(</span><span class="s2">&quot;distributed_split&quot;</span><span class="p">)</span>
 <span class="n">flow</span><span class="o">.</span><span class="n">boxing</span><span class="o">.</span><span class="n">nccl</span><span class="o">.</span><span class="n">enable_use_compute_stream</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
