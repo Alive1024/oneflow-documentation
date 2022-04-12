@@ -704,6 +704,13 @@
       
         <li class="md-nav__item">
   <a href="#zero" class="md-nav__link">
+    ZeRO 简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zero_1" class="md-nav__link">
     ZeRO 使用示例
   </a>
   
@@ -792,6 +799,13 @@
       
         <li class="md-nav__item">
   <a href="#zero" class="md-nav__link">
+    ZeRO 简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zero_1" class="md-nav__link">
     ZeRO 使用示例
   </a>
   
@@ -819,6 +833,7 @@
 <p class="admonition-title">Warning</p>
 <p>此教程中涉及的 ZeRO 相关的 API 未来可能会发生变动。</p>
 </div>
+<h2 id="zero">ZeRO 简介<a class="headerlink" href="#zero" title="Permanent link">&para;</a></h2>
 <p><strong>Zero Redundancy Optimizer (ZeRO)</strong> 是论文 <a href="https://arxiv.org/pdf/1910.02054.pdf">ZeRO: Memory Optimization Towards Training A Trillion Parameter Models</a> 提出的一种用于减少数据并行策略下的显存占用的方法。</p>
 <p>在普通的数据并行策略中，每个 GPU 都独立地维护一组完整的模型参数，计算与通信效率较高，但内存效率较差。这个问题在训练大型模型时尤为突出。ZeRO 由 ZeRO-DP 和 ZeRO-R 两部分组成，可以有效地减少显存消耗量，这意味着在同样的显存下，可以训练更大的模型，也意味着对于以往只能通过模型并行策略才能训练的大模型也有可能使用数据并行。</p>
 <p>训练深度学习模型时的显存消耗可以分为两大部分：</p>
@@ -838,7 +853,7 @@
 </div>
 
 <p>ZeRO-R 则通过 activation checkpointing、设定恒定大小的缓冲区和动态内存碎片整理机制来优化残余状态的显存消耗。</p>
-<h2 id="zero">ZeRO 使用示例<a class="headerlink" href="#zero" title="Permanent link">&para;</a></h2>
+<h2 id="zero_1">ZeRO 使用示例<a class="headerlink" href="#zero_1" title="Permanent link">&para;</a></h2>
 <p>首先导入 OneFlow：
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
 <span class="kn">from</span> <span class="nn">oneflow</span> <span class="kn">import</span> <span class="n">nn</span>
@@ -887,8 +902,8 @@
 
     <span class="n">graph_model</span><span class="p">(</span><span class="n">global_x</span><span class="p">,</span> <span class="n">global_y</span><span class="p">)</span>
 </code></pre></div>
-<p>然后通过 <a href="../parallelism/04_launch.html">launch 模块</a> 启动训练。</p>
-<p>在 nn.Graph 中开启 ZeRO 的方法如下：</p>
+<p>然后通过 <a href="../parallelism/04_launch.html">launch 模块</a> 启动训练即可。</p>
+<p><strong>在 nn.Graph 中开启 ZeRO 的方法如下</strong>：</p>
 <p><strong>阶段 1</strong>：通过 <a href="https://oneflow.readthedocs.io/en/master/graph.html#oneflow.nn.graph.graph_config.GraphConfig.set_zero_redundancy_optimizer_mode">config.set_zero_redundancy_optimizer_mode</a> 接口可以开启阶段 1。即在上面的 nn.Graph 模型中添加：</p>
 <div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_zero_redundancy_optimizer_mode</span><span class="p">(</span><span class="s2">&quot;distributed_split&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -903,8 +918,8 @@
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>虽然开启第三阶段可以最大限度地减少显存消耗，但这会增加通信成本，在实践中一般使用第二阶段。</p>
 </div>
+<p>虽然开启第三阶段可以最大限度地减少显存消耗，但这会增加通信成本，在实践中一般使用第二阶段。</p>
                 
               
               
