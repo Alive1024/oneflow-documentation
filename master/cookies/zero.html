@@ -956,13 +956,13 @@
 <p><strong>阶段 1</strong>：通过 <a href="https://oneflow.readthedocs.io/en/master/graph.html#oneflow.nn.graph.graph_config.GraphConfig.set_zero_redundancy_optimizer_mode">config.set_zero_redundancy_optimizer_mode</a> 接口可以开启阶段 1。即在上面的 nn.Graph 模型中添加：</p>
 <div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_zero_redundancy_optimizer_mode</span><span class="p">(</span><span class="s2">&quot;distributed_split&quot;</span><span class="p">)</span>
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>此 API 未来可能会发生变动。</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>当使用模型连续进行训练和和预测时：训练执行一次后，ZeRO 会自动把模型的 SBP 参数从 Broadcast 改变为 Split；在执行预测时，将会使用 Split 自动推理，无需配置 ZeRO。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>此 API 未来可能会发生变动。</p>
 </div>
 <p><strong>阶段 2</strong>：在阶段 1 的基础上，增加 <code>flow.boxing.nccl.enable_use_compute_stream(True)</code> 可以开启阶段 2。即在上面的 nn.Graph 模型中添加：</p>
 <div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_zero_redundancy_optimizer_mode</span><span class="p">(</span><span class="s2">&quot;distributed_split&quot;</span><span class="p">)</span>
