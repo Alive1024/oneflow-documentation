@@ -674,8 +674,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-of-use-amp" class="md-nav__link">
-    Example of use AMP
+  <a href="#example-of-using-amp" class="md-nav__link">
+    Example of using AMP
   </a>
   
 </li>
@@ -714,6 +714,42 @@
     <li class="md-nav__item">
       <a href="torch2flow.html" class="md-nav__link">
         Converting Pre-trained Model from PyTorch to OneFlow
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="transfer_learning.html" class="md-nav__link">
+        Transfer Learning in Computer Vision
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="one_embedding.html" class="md-nav__link">
+        Large-Scale Embedding Solution OneEmbedding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="zero.html" class="md-nav__link">
+        Zero Redundancy Optimizer (ZeRO)
       </a>
     </li>
   
@@ -800,8 +836,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-of-use-amp" class="md-nav__link">
-    Example of use AMP
+  <a href="#example-of-using-amp" class="md-nav__link">
+    Example of using AMP
   </a>
   
 </li>
@@ -832,8 +868,8 @@
                 
                 <h1 id="automatic-mixed-precision-training">Automatic Mixed Precision Training<a class="headerlink" href="#automatic-mixed-precision-training" title="Permanent link">&para;</a></h1>
 <h2 id="introduction-to-amp">Introduction to AMP<a class="headerlink" href="#introduction-to-amp" title="Permanent link">&para;</a></h2>
-<p>When we train deep learning models, we typically use 32-bit single-precision floating point (FP32), while <strong>AMP (Automatic Mixed Precision)</strong> is a technique that allows both FP32 and FP16 to be used when training models. This can make the memory usage less and the calculation faster when training the model. But because the numerical range of FP16 is smaller than that of FP32, it is more prone to numerical overflow problems, and there may be some errors. But lots of practice has proved that many deep learning models can be trained with this technique without loss of accuracy.</p>
-<h2 id="example-of-use-amp">Example of use AMP<a class="headerlink" href="#example-of-use-amp" title="Permanent link">&para;</a></h2>
+<p>When we train deep learning models, we typically use 32-bit single-precision floating point (FP32), while <strong>AMP (Automatic Mixed Precision)</strong> is a technique that allows both FP32 and FP16 to be used when training models. This can make the memory usage less and the computation faster when training the model. But because the numerical range of FP16 is smaller than that of FP32, it is more prone to numerical overflow problems, and there may be some errors. But lots of practice has proved that many deep learning models can be trained with this technique without loss of accuracy.</p>
+<h2 id="example-of-using-amp">Example of using AMP<a class="headerlink" href="#example-of-using-amp" title="Permanent link">&para;</a></h2>
 <p>First, we define a simple model, loss function and optimizer in exactly the same way as before.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
 <span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="k">as</span> <span class="nn">nn</span>
@@ -878,7 +914,7 @@
 </code></pre></div>
 <h2 id="gradient-scaling">Gradient Scaling<a class="headerlink" href="#gradient-scaling" title="Permanent link">&para;</a></h2>
 <p><strong>Gradient Scaling</strong> is a method for solving the problem that FP16 is prone to numerical overflow. The basic principle is to use a scale factor to scale the loss and gradient in the process of backpropagation to change the magnitude of its value, thereby mitigate numerical overflow problems as much as possible.</p>
-<p>OneFlow provides GradScaler to use Gradient Scaling in AMP mode. You only need to instantiate a GradScaler object in the <code>__init__</code> method of the nn.Graph model, and then specify it through the interface <a href="https://oneflow.readthedocs.io/en/master/graph.html#oneflow.nn.Graph.set_grad_scaler">set_grad_scaler</a>. nn.Graph will automatically manage the whole process of Gradient Scaling. Taking the <code>CustomGraph</code> above as an example, you need to add the following code to its <code>__init__</code> method:</p>
+<p>OneFlow provides <code>GradScaler</code> to use Gradient Scaling in AMP mode. You only need to instantiate a <code>GradScaler</code> object in the <code>__init__</code> method of the nn.Graph model, and then specify it through the interface <a href="https://oneflow.readthedocs.io/en/master/graph.html#oneflow.nn.Graph.set_grad_scaler">set_grad_scaler</a>. nn.Graph will automatically manage the whole process of Gradient Scaling. Taking the <code>CustomGraph</code> above as an example, you need to add the following code to its <code>__init__</code> method:</p>
 <div class="highlight"><pre><span></span><code><span class="n">grad_scaler</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">amp</span><span class="o">.</span><span class="n">GradScaler</span><span class="p">(</span>
     <span class="n">init_scale</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span>
     <span class="n">growth_factor</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>

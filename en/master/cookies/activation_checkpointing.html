@@ -686,15 +686,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-of-us-activation-checkpointing" class="md-nav__link">
-    Example of us Activation Checkpointing
+  <a href="#example-of-using-activation-checkpointing" class="md-nav__link">
+    Example of using Activation Checkpointing
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#comparative-experiment-on-bert-model" class="md-nav__link">
-    Comparative experiment on Bert model
+    Comparative Experiment on BERT Model
   </a>
   
 </li>
@@ -714,6 +714,42 @@
     <li class="md-nav__item">
       <a href="torch2flow.html" class="md-nav__link">
         Converting Pre-trained Model from PyTorch to OneFlow
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="transfer_learning.html" class="md-nav__link">
+        Transfer Learning in Computer Vision
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="one_embedding.html" class="md-nav__link">
+        Large-Scale Embedding Solution OneEmbedding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="zero.html" class="md-nav__link">
+        Zero Redundancy Optimizer (ZeRO)
       </a>
     </li>
   
@@ -800,15 +836,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-of-us-activation-checkpointing" class="md-nav__link">
-    Example of us Activation Checkpointing
+  <a href="#example-of-using-activation-checkpointing" class="md-nav__link">
+    Example of using Activation Checkpointing
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#comparative-experiment-on-bert-model" class="md-nav__link">
-    Comparative experiment on Bert model
+    Comparative Experiment on BERT Model
   </a>
   
 </li>
@@ -834,7 +870,7 @@
 <h2 id="introduction-to-activation-checkpointing">Introduction to Activation Checkpointing<a class="headerlink" href="#introduction-to-activation-checkpointing" title="Permanent link">&para;</a></h2>
 <p>Activation Checkpointing is a sub-linear memory optimization technique proposed in 2016, by Chen Tianqi's team in their paper <a href="https://arxiv.org/abs/1604.06174">Training Deep Nets with Sublinear Memory Cost</a>, aiming to reduce the memory usage during training. The basic principle of Activation Checkpointing is <strong>exchange time for space</strong>: After the analysis of the computational graph, some intermediate activation features that are not used temporarily in the forward process will be deleted to reduce the memory usage, and they will be restored with additional forward computation when needed in the backward process.</p>
 <p>OneFlow's static graph module <code>nn.Graph</code> already supports Activation Checkpointing. This article will introduce how to turn on it during training.</p>
-<h2 id="example-of-us-activation-checkpointing">Example of us Activation Checkpointing<a class="headerlink" href="#example-of-us-activation-checkpointing" title="Permanent link">&para;</a></h2>
+<h2 id="example-of-using-activation-checkpointing">Example of using Activation Checkpointing<a class="headerlink" href="#example-of-using-activation-checkpointing" title="Permanent link">&para;</a></h2>
 <p>First, we define a simple model consist of loss function and optimizer in exactly the same way as before.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
 <span class="kn">import</span> <span class="nn">oneflow.nn</span> <span class="k">as</span> <span class="nn">nn</span>
@@ -870,7 +906,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model_part1</span> <span class="o">=</span> <span class="n">model_part1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model_part2</span> <span class="o">=</span> <span class="n">model_part2</span>
-        <span class="c1"># 在连续的两个 nn.Module 上开启 activation checkpointing</span>
+        <span class="c1"># Turn on activation checkpointing on two consecutive nn.Module</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model_part1</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">activation_checkpointing</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model_part2</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">activation_checkpointing</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">loss_fn</span> <span class="o">=</span> <span class="n">loss_fn</span>
@@ -889,11 +925,11 @@
     <span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
     <span class="n">graph_model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-    <span class="c1"># 其他代码...</span>
+    <span class="c1"># Other codes...</span>
 </code></pre></div>
-<h2 id="comparative-experiment-on-bert-model">Comparative experiment on Bert model<a class="headerlink" href="#comparative-experiment-on-bert-model" title="Permanent link">&para;</a></h2>
-<p>In order to verify the actual effect of Activation Checkpointing, we can conduct comparative experiments on the model <a href="https://arxiv.org/abs/1810.04805">Bert</a>. We can directly use the Bert model provided by <a href="https://github.com/Oneflow-Inc/libai">libai</a>. To turn on Activation Checkpointing, we just need to set <code>train.activation_checkpoint.enabled</code> to <code>True</code> in the configuration file.</p>
-<p>First, get data ready according to <a href="https://libai.readthedocs.io/en/latest/tutorials/get_started/quick_run.html#prepare-the-data-and-the-vocab">Prepare the Data and the Vocab</a>. For simplicity, we use a single card for training (the GPU used in the experimental environment is NVIDIA GeForce RTX 3090, and the memory size is 24268 MB):</p>
+<h2 id="comparative-experiment-on-bert-model">Comparative Experiment on BERT Model<a class="headerlink" href="#comparative-experiment-on-bert-model" title="Permanent link">&para;</a></h2>
+<p>In order to verify the actual effect of Activation Checkpointing, we can conduct comparative experiments on the model <a href="https://arxiv.org/abs/1810.04805">BERT</a>. We can directly use the BERT model provided by <a href="https://github.com/Oneflow-Inc/libai">libai</a>. To turn on Activation Checkpointing, we just need to set <code>train.activation_checkpoint.enabled</code> to <code>True</code> in the configuration file.</p>
+<p>First, get data ready according to <a href="https://libai.readthedocs.io/en/latest/tutorials/get_started/quick_run.html#prepare-the-data-and-the-vocab">Prepare the Data and the Vocab</a>. For simplicity, we use a single device for training (the GPU used in the experimental environment is NVIDIA GeForce RTX 3090, and the memory size is 24268 MB):</p>
 <div class="highlight"><pre><span></span><code><span class="nb">time</span> python tools/train_net.py --config-file configs/bert_large_pretrain.py
 </code></pre></div>
 <p>Add the <code>time</code> command at the beginning of the whole command to measure the time spent in the training process.</p>

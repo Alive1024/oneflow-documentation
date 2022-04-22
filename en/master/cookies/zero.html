@@ -11,14 +11,14 @@
       
       
       
-        <link rel="canonical" href="https://docs.oneflow.org/parallelism/01_introduction.html">
+        <link rel="canonical" href="https://docs.oneflow.org/cookies/zero.html">
       
       <link rel="icon" href="../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.11">
     
     
       
-        <title>Common Parallel Strategies - OneFlow</title>
+        <title>Zero Redundancy Optimizer (ZeRO) - OneFlow</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#common-distributed-parallel-strategy" class="md-skip">
+        <a href="#zero-redundancy-optimizer-zero" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Common Parallel Strategies
+              Zero Redundancy Optimizer (ZeRO)
             
           </span>
         </div>
@@ -227,15 +227,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="01_introduction.html" class="md-tabs__link md-tabs__link--active">
+      <a href="../parallelism/01_introduction.html" class="md-tabs__link">
         Distributed Training
       </a>
     </li>
@@ -245,13 +243,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../cookies/oneflow2onnnx.html" class="md-tabs__link">
+      <a href="oneflow2onnnx.html" class="md-tabs__link md-tabs__link--active">
         Cookbook
       </a>
     </li>
@@ -471,14 +471,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       <label class="md-nav__link" for="__nav_3">
         Distributed Training
@@ -494,92 +492,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Common Parallel Strategies
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="01_introduction.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../parallelism/01_introduction.html" class="md-nav__link">
         Common Parallel Strategies
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#why-distributed-training-is-prevailing" class="md-nav__link">
-    Why Distributed Training is Prevailing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-parallel-strategies" class="md-nav__link">
-    Common Parallel Strategies
-  </a>
-  
-    <nav class="md-nav" aria-label="Common Parallel Strategies">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data-parallelism" class="md-nav__link">
-    Data Parallelism
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#model-parallelism" class="md-nav__link">
-    Model Parallelism
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pipelining-parallelism" class="md-nav__link">
-    Pipelining Parallelism
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hybrid-parallelism" class="md-nav__link">
-    Hybrid Parallelism
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -589,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02_sbp.html" class="md-nav__link">
+      <a href="../parallelism/02_sbp.html" class="md-nav__link">
         Global View
       </a>
     </li>
@@ -601,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03_consistent_tensor.html" class="md-nav__link">
+      <a href="../parallelism/03_consistent_tensor.html" class="md-nav__link">
         Global Tensor
       </a>
     </li>
@@ -613,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04_2d-sbp.html" class="md-nav__link">
+      <a href="../parallelism/04_2d-sbp.html" class="md-nav__link">
         2D SBP
       </a>
     </li>
@@ -625,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04_launch.html" class="md-nav__link">
+      <a href="../parallelism/04_launch.html" class="md-nav__link">
         Distributed Training Launcher
       </a>
     </li>
@@ -637,7 +554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05_ddp.html" class="md-nav__link">
+      <a href="../parallelism/05_ddp.html" class="md-nav__link">
         Data Parallelism Training
       </a>
     </li>
@@ -649,7 +566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06_pipeline.html" class="md-nav__link">
+      <a href="../parallelism/06_pipeline.html" class="md-nav__link">
         Pipelining Parallelism
       </a>
     </li>
@@ -668,12 +585,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       <label class="md-nav__link" for="__nav_4">
         Cookbook
@@ -691,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cookies/oneflow2onnnx.html" class="md-nav__link">
+      <a href="oneflow2onnnx.html" class="md-nav__link">
         OneFlow with ONNX
       </a>
     </li>
@@ -703,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cookies/serving.html" class="md-nav__link">
+      <a href="serving.html" class="md-nav__link">
         Model Deployment
       </a>
     </li>
@@ -715,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cookies/amp.html" class="md-nav__link">
+      <a href="amp.html" class="md-nav__link">
         Automatic Mixed Precision Training
       </a>
     </li>
@@ -727,7 +646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cookies/activation_checkpointing.html" class="md-nav__link">
+      <a href="activation_checkpointing.html" class="md-nav__link">
         Activation Checkpointing
       </a>
     </li>
@@ -739,7 +658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cookies/torch2flow.html" class="md-nav__link">
+      <a href="torch2flow.html" class="md-nav__link">
         Converting Pre-trained Model from PyTorch to OneFlow
       </a>
     </li>
@@ -751,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cookies/transfer_learning.html" class="md-nav__link">
+      <a href="transfer_learning.html" class="md-nav__link">
         Transfer Learning in Computer Vision
       </a>
     </li>
@@ -763,7 +682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cookies/one_embedding.html" class="md-nav__link">
+      <a href="one_embedding.html" class="md-nav__link">
         Large-Scale Embedding Solution OneEmbedding
       </a>
     </li>
@@ -773,11 +692,78 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../cookies/zero.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Zero Redundancy Optimizer (ZeRO)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="zero.html" class="md-nav__link md-nav__link--active">
         Zero Redundancy Optimizer (ZeRO)
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-zero" class="md-nav__link">
+    Introduction to ZeRO
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zero-usage-example" class="md-nav__link">
+    ZeRo Usage Example
+  </a>
+  
+    <nav class="md-nav" aria-label="ZeRo Usage Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definine-the-training-process-of-data-parallelism" class="md-nav__link">
+    Definine the Training Process of Data Parallelism
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-zero-in-nngraph" class="md-nav__link">
+    Enable ZeRO in nn.Graph
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -856,44 +842,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-distributed-training-is-prevailing" class="md-nav__link">
-    Why Distributed Training is Prevailing
+  <a href="#introduction-to-zero" class="md-nav__link">
+    Introduction to ZeRO
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#common-parallel-strategies" class="md-nav__link">
-    Common Parallel Strategies
+  <a href="#zero-usage-example" class="md-nav__link">
+    ZeRo Usage Example
   </a>
   
-    <nav class="md-nav" aria-label="Common Parallel Strategies">
+    <nav class="md-nav" aria-label="ZeRo Usage Example">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#data-parallelism" class="md-nav__link">
-    Data Parallelism
+  <a href="#definine-the-training-process-of-data-parallelism" class="md-nav__link">
+    Definine the Training Process of Data Parallelism
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#model-parallelism" class="md-nav__link">
-    Model Parallelism
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pipelining-parallelism" class="md-nav__link">
-    Pipelining Parallelism
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hybrid-parallelism" class="md-nav__link">
-    Hybrid Parallelism
+  <a href="#enable-zero-in-nngraph" class="md-nav__link">
+    Enable ZeRO in nn.Graph
   </a>
   
 </li>
@@ -915,52 +887,113 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/OneFlow-Inc/oneflow-documentation/blob/master/en/docs/parallelism/01_introduction.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/OneFlow-Inc/oneflow-documentation/blob/master/en/docs/cookies/zero.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="common-distributed-parallel-strategy">COMMON DISTRIBUTED PARALLEL STRATEGY<a class="headerlink" href="#common-distributed-parallel-strategy" title="Permanent link">&para;</a></h1>
-<h2 id="why-distributed-training-is-prevailing">Why Distributed Training is Prevailing<a class="headerlink" href="#why-distributed-training-is-prevailing" title="Permanent link">&para;</a></h2>
-<p>In recent years, deep learning has been widely used in various fields, including computer vision, language understanding, speech recognition, advertising recommendation and so on. A common feature in these different areas is the growing size of models, such as the GPT-3 model, which has 175 billion parameters. Even with 1,024 of 80 GB A100 cards, the full GPT-3 training time would take a month.</p>
-<p>The enlargement of model scale requires the development of hardware (computing power, memory). However, because of the existence of memory walls, the computational power and capacity of a single device, limited by the laws of physics, it is increasingly difficult to continuously improve the integration of chips and to keep up with the demands of model expansion.</p>
-<p>In order to solve the problem of insufficient increase speed of computing power, it is necessary to use multi-node cluster for distributed training in order to improve computing speed.</p>
-<h2 id="common-parallel-strategies">Common Parallel Strategies<a class="headerlink" href="#common-parallel-strategies" title="Permanent link">&para;</a></h2>
-<p>Simply stacking machines does not increase computing power necessarily. Because the training of neural networks can not be simply "divide the work done by one device to multiple ones". It requires not only multiple devices to perform computing, but also data transmission between devices, only by coordinating the computing and communication in the cluster, can we do efficient distributed training.</p>
-<p>We will explain the difference between data parallelism and model parallelism with an example of matrix multiplication.</p>
-<p>Let's look at the following logical matrix multiplication examples:</p>
-<p>If a layer in the neural network is doing matrix multiplication, where the shape of the input <span class="arithmatex">\(x\)</span> is <span class="arithmatex">\(4\times5\)</span> and the shape of the model parameter <span class="arithmatex">\(w\)</span> is <span class="arithmatex">\(5\times8\)</span>, then the matrix multiplication output shape is <span class="arithmatex">\(4\times8\)</span>. The schematic diagram is as follows:</p>
-<p><img alt="matmul" src="imgs/matmul_logical.png" /></p>
-<p>In the single machine single card training situaiton, the above matrix multiplication first calculates <span class="arithmatex">\(out\)</span>, passes <span class="arithmatex">\(out\)</span> to the next layer, and finally calculates <span class="arithmatex">\(loss\)</span>, and then in the backpropagation process, gets <span class="arithmatex">\(\frac{\partial loss}{\partial w}\)</span>, which then be used to update <span class="arithmatex">\(w\)</span>.</p>
-<p>In distributed training, there are "<strong>Data Parallelism</strong>" and "<strong>Model Parallelism</strong>" strategies depending on whether <span class="arithmatex">\(x\)</span> or <span class="arithmatex">\(w\)</span> is partitioned. In the next section, we will introduce common strategies for parallelism.</p>
-<h3 id="data-parallelism">Data Parallelism<a class="headerlink" href="#data-parallelism" title="Permanent link">&para;</a></h3>
-<p>Data parallelism slices <span class="arithmatex">\(x\)</span>, while the model parameter <span class="arithmatex">\(w\)</span> on each device is complete and consistent. As shown in the figure below, <span class="arithmatex">\(x\)</span> is split evenly into two devices by dimension 0, each with a full <span class="arithmatex">\(w\)</span>.</p>
-<p>In this way, the output on each device is only half the logical output, which shape is <span class="arithmatex">\(2\times8\)</span>. The output on both devices combind together to produce the logically complete output.</p>
-<p><img alt="Data Paralelism" src="imgs/matmul_data_paralelism.png" /></p>
-<p>Note that because the data is distributed to two devices, the backpropagation process will get different values for <span class="arithmatex">\(\frac{\partial loss}{\partial w}\)</span>, if the models are updated directly using the gradients on each device, it would cause the models on the two devices to be inconsistent, and the training would be meaningless(Which model should be used?).</p>
-<p>Therefore, in the process of backpropagation under data parallelism strategy, the gradients on each device should do <a href="https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html#allreduce">AllReduce</a> before use, which ensures the model on each device is always consistent.</p>
-<p>When the dataset is large and the model is small, and the communication cost for the gradients synchronization is small in the backpropagation process, so it is more advantageous to choose data parallelism in this situation. For example, the common vision classification model, such as ResNet50, is more suitable to use data parallelism strategy.</p>
-<h3 id="model-parallelism">Model Parallelism<a class="headerlink" href="#model-parallelism" title="Permanent link">&para;</a></h3>
-<p>When the neural network is very large, the cost of gradients synchronization will be very high, moreover, the network may be too large to be stored in a single computing device, then the model parallelism strategy can be used.</p>
-<p>The so called model parallelism is that the data on each device is complete and consistent, while the model <span class="arithmatex">\(w\)</span> is split into different devices, each device only has a part of the model, all the parts of model on the computing device put together forms the complete model.</p>
-<p>As shown in the figure below, <span class="arithmatex">\(w\)</span> is split evenly into two devices by the first dimension, each with a full <span class="arithmatex">\(x\)</span>. The output on both devices also needs to be combind together to get the logical output.</p>
-<p><img alt="Model Paralelism" src="imgs/matmul_model_paralelism.png" /></p>
-<p>The benefit of model parallelism is that it eliminates the gradient AllReduce between multiple devices. However, since each device requires complete input data, the input is broadcasted among multiple devices with some communication cost. For example, the <span class="arithmatex">\(out~(4\times8)\)</span> shown above needs to be broadcast to both devices if it is the input of the next layer.</p>
-<p>Language models, such as BERT, often use model parallelism.</p>
-<h3 id="pipelining-parallelism">Pipelining Parallelism<a class="headerlink" href="#pipelining-parallelism" title="Permanent link">&para;</a></h3>
-<p>When the neural network is too large to be stored on a single device, in addition to the above parallel strategies, we can also choose pipelining parallel strategy. Pipelining paralelism divides the network into stages and places it to different computing devices, each of which completes the training in a "relay" manner.</p>
-<p>The figure below shows how to run with pipelining parallelism with a logical four-layer network (<code>T1</code> to <code>T4</code>).</p>
-<p>The four-layer network is divided into two computing devices, so that the <code>T1</code> and <code>T2</code> are placed to <code>GPU0</code> and <code>T3</code> and <code>T4</code> are placed to <code>GPU1</code>.</p>
-<p>After computing the first two layers on <code>GPU0</code>, its output is treated as the input of <code>GPU1</code> to continue computation of the next two layers.</p>
+                <h1 id="zero-redundancy-optimizer-zero">Zero Redundancy Optimizer (ZeRO)<a class="headerlink" href="#zero-redundancy-optimizer-zero" title="Permanent link">&para;</a></h1>
+<h2 id="introduction-to-zero">Introduction to ZeRO<a class="headerlink" href="#introduction-to-zero" title="Permanent link">&para;</a></h2>
+<p><strong>Zero Redundancy Optimizer (ZeRO)</strong> is a method proposed in paper <a href="https://arxiv.org/pdf/1910.02054.pdf">ZeRO: Memory Optimization Towards Training A Trillion Parameter Models</a>, aiming to reduce the memory usage under the data parallelism strategy.</p>
+<p>In common data parallelism strategy, each GPU independently maintains a complete set of model parameters, which is efficient in computation and communication, but inefficient in memory. This problem is especially acute when training large models. ZeRO consists of ZeRO-DP and ZeRO-R, which can effectively reduce the consumption of video memory. This means that larger models can be trained with the same amount of memory. It also means that it is possible to use data parallelism for large models that could only be trained with model parallelism strategies in the past.</p>
+<p>The memory consumption when training a deep learning model can be divided into two parts:</p>
+<ol>
+<li>
+<p><strong>Model States</strong>. For large models, most of the memory consumption is occupied by the model state, which mainly includes three parts: Optimizer States, Gradients, and Parameters. The three parts are abbreviated as <strong>OPG</strong>.</p>
+</li>
+<li>
+<p><strong>Residual States</strong>. It includes activation functions, temporary buffers, and unusable memory fragments.</p>
+</li>
+</ol>
+<p>ZeRO-DP can be divided into three stages, eliminating memory redundancy by partitioning the OPG state rather than copying it directly, and each GPU only saves part of the OGP. Specifically, ZeRO-DP has three main optimization stages, corresponding to O, P, and G respectively. The three stages increase step by step:</p>
+<ol>
+<li>Optimizer states partition（P<sub>os</sub>）: This state is also known as ZeRO-OS because of 4x less memory consumption and the same amount of traffic as data parallelism.</li>
+<li>Add gradients partition optimizer (P<sub>os+g</sub>): At this stage, the memory consumption is reduced by 8 times, and the traffic is the same as the data parallelism.</li>
+<li>Add parameter partition optimizer (P<sub>os+g+p</sub>): At this stage, the memory occupied by the model is evenly distributed among each GPU. Memory consumption is linearly inversely proportional to the degree of data parallelism, but there will be a slight increase in traffic.</li>
+</ol>
+<p>The distribution of the memory consumption of the three stages can be seen in the following figure (from the original ZeRO paper Figure 1):</p>
 <div align="center">
-<img src="./imgs/realy.png" width="50%" alt="Relay"/>
+<img src="./imgs/Three_Stages_of_ZeRO-DP_Optimizations.jpg" 
+alt="Three Stages of ZeRO-DP Optimizations" width="75%">
 </div>
 
-<h3 id="hybrid-parallelism">Hybrid Parallelism<a class="headerlink" href="#hybrid-parallelism" title="Permanent link">&para;</a></h3>
-<p>You can also mix with a variety of parallelism strategies when training a network, take GPT-3 as an example, the parallelism strategy for training could be like this:</p>
-<p>This large GPT network is partitioned into 64 stages, with each stage running on 6 DGX-A100s. The workload among the 6 machines is trained with data parallelism, while the workload among GPUs inside each machine is trained with model parallelism. The 3072 A100s in the entire cluster are divided into a matrix of <span class="arithmatex">\(6\times8\times64\)</span>, and then train the model using data parallelism, model parallelism and pipeline parallelism simultaneously.</p>
-<p><img alt="gpt-3" src="imgs/gpt3-overview.png" /></p>
-<p>The choice of parallelism strategy affects the efficiency of training. Whether the interface of framework supports parallelism well also determines the efficiency of algorithm engineer. OneFlow's system-level design and innovation for distributed training will help users to get comfortable well with distributed training. The related examples will be shown in other articles on this topic.</p>
+<h2 id="zero-usage-example">ZeRo Usage Example<a class="headerlink" href="#zero-usage-example" title="Permanent link">&para;</a></h2>
+<p>First, import OneFlow：
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
+<span class="kn">from</span> <span class="nn">oneflow</span> <span class="kn">import</span> <span class="n">nn</span>
+</code></pre></div></p>
+<h3 id="definine-the-training-process-of-data-parallelism">Definine the Training Process of Data Parallelism<a class="headerlink" href="#definine-the-training-process-of-data-parallelism" title="Permanent link">&para;</a></h3>
+<p>We define a training process under a data parallellelism strategy, similar to that described in <a href="../parallelism/05_ddp.html#通过设置-sbp-做数据并行训练">Conduct data parallel training by setting SBP</a>.</p>
+<p>After the definition, we will use placement, SBP, etc:
+<div class="highlight"><pre><span></span><code><span class="n">P</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">broadcast</span>
+<span class="n">S0</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">DEVICE</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span>
+</code></pre></div></p>
+<p>For demonstration purposes, we define a simple model and broadcast it to the cluster:
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span>
+                      <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+                      <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">B</span><span class="p">)</span>
+
+<span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+</code></pre></div></p>
+<p>ZeRO is set in <a href="../basics/08_nn_graph.html">nn.Graph</a>, so the dynamic graph model needs to be converted to nn.Graph:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">CustomGraph</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loss_fn</span> <span class="o">=</span> <span class="n">loss_fn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_optimizer</span><span class="p">(</span><span class="n">optimizer</span><span class="p">)</span>
+
+        <span class="c1"># TODO: Set ZeRO</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss_fn</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">preds</span>
+</code></pre></div>
+<p>Definine the Training Process</p>
+<div class="highlight"><pre><span></span><code><span class="n">graph_model</span> <span class="o">=</span> <span class="n">CustomGraph</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">flow</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
+    <span class="n">global_x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">S0</span><span class="p">)</span>
+    <span class="n">global_y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">S0</span><span class="p">)</span>
+
+    <span class="n">graph_model</span><span class="p">(</span><span class="n">global_x</span><span class="p">,</span> <span class="n">global_y</span><span class="p">)</span>
+</code></pre></div>
+<p>Then start training through <a href="../parallelism/04_launch.html">launch Module</a> </p>
+<h3 id="enable-zero-in-nngraph">Enable ZeRO in nn.Graph<a class="headerlink" href="#enable-zero-in-nngraph" title="Permanent link">&para;</a></h3>
+<p><strong>Stage 1</strong>: Stage 1 can be enabled through the interface <a href="https://oneflow.readthedocs.io/en/master/graph.html#oneflow.nn.graph.graph_config.GraphConfig.set_zero_redundancy_optimizer_mode">config.set_zero_redundancy_optimizer_mode</a> . i.e. add the following code in the nn.Graph model above:</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_zero_redundancy_optimizer_mode</span><span class="p">(</span><span class="s2">&quot;distributed_split&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using the model for continuous training and prediction: After the training is performed once, ZeRO will automatically change the SBP parameter of the model from Broadcast to Split; when performing prediction, Split will be used for automatic inference without configuring ZeRO.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This API is subject to change in the future.</p>
+</div>
+<p><strong>Stage 2</strong>: On the basis of stage 1, adding <code>flow.boxing.nccl.enable_use_compute_stream(True)</code> can enable stage 2. i.e. add the following code in the nn.Graph model above:</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_zero_redundancy_optimizer_mode</span><span class="p">(</span><span class="s2">&quot;distributed_split&quot;</span><span class="p">)</span>
+<span class="n">flow</span><span class="o">.</span><span class="n">boxing</span><span class="o">.</span><span class="n">nccl</span><span class="o">.</span><span class="n">enable_use_compute_stream</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Stage 3</strong>:On the basis of stage 2, adding <code>flow.boxing.nccl.disable_group_boxing_by_dst_parallel(True)</code> can enable stage 3. i.e. add the following code in the nn.Graph model above:</p>
+<div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_zero_redundancy_optimizer_mode</span><span class="p">(</span><span class="s2">&quot;distributed_split&quot;</span><span class="p">)</span>
+<span class="n">flow</span><span class="o">.</span><span class="n">boxing</span><span class="o">.</span><span class="n">nccl</span><span class="o">.</span><span class="n">enable_use_compute_stream</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">flow</span><span class="o">.</span><span class="n">boxing</span><span class="o">.</span><span class="n">nccl</span><span class="o">.</span><span class="n">disable_group_boxing_by_dst_parallel</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although enabling the third stage can minimize the memory consumption, it will increase the communication cost, and the second stage is generally used in practice.</p>
+</div>
                 
               
               
@@ -985,7 +1018,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../basics/08_nn_graph.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Static Graph Interface" rel="prev">
+        <a href="one_embedding.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Large-Scale Embedding Solution OneEmbedding" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -994,26 +1027,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Static Graph Interface
+              Large-Scale Embedding Solution OneEmbedding
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="02_sbp.html" class="md-footer__link md-footer__link--next" aria-label="Next: Global View" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Global View
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
