@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://docs.oneflow.org/cookies/torch2flow.html">
       
       <link rel="icon" href="../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.11">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.1.11">
     
     
       
@@ -717,6 +717,18 @@
   
   
     <li class="md-nav__item">
+      <a href="transfer_learning.html" class="md-nav__link">
+        计算机视觉迁移学习
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="one_embedding.html" class="md-nav__link">
         大规模 Embedding 方案： OneEmbedding
       </a>
@@ -854,7 +866,7 @@
     <span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">()</span>
 <span class="p">)</span>
 
-<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">save_file</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model_torch</span><span class="p">,</span> <span class="n">save_file</span><span class="p">)</span>
 </code></pre></div>
 <p>运行以上代码，将得到 PyTorch 模型文件 <code>model.pth</code> 。将它转为 OneFlow 版本的模型包括两个主要步骤：</p>
 <ul>
@@ -940,13 +952,13 @@
       
       
         
-        <a href="one_embedding.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 大规模 Embedding 方案： OneEmbedding" rel="next">
+        <a href="transfer_learning.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 计算机视觉迁移学习" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              大规模 Embedding 方案： OneEmbedding
+              计算机视觉迁移学习
             </div>
           </div>
           <div class="md-footer__button md-icon">
