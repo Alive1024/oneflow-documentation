@@ -243,13 +243,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="oneflow2onnnx.html" class="md-tabs__link">
+      <a href="oneflow2onnnx.html" class="md-tabs__link md-tabs__link--active">
         实践指南
       </a>
     </li>
@@ -583,12 +585,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       <label class="md-nav__link" for="__nav_4">
         实践指南
@@ -693,6 +697,112 @@
       <a href="zero.html" class="md-nav__link">
         Zero Redundancy Optimizer (ZeRO)
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          使用 Global Tensor 进行多机多设备编程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="global_tensor.html" class="md-nav__link md-nav__link--active">
+        使用 Global Tensor 进行多机多设备编程
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#global-tensor_1" class="md-nav__link">
+    创建 Global Tensor
+  </a>
+  
+    <nav class="md-nav" aria-label="创建 Global Tensor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-tensor-global-tensor" class="md-nav__link">
+    由 local tensor 转换得到 global tensor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-tensor-local-tensor" class="md-nav__link">
+    由 global tensor 得到 local tensor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-tensor-global-tensor" class="md-nav__link">
+    由 global tensor 转成 另外一个 global tensor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-tensor_2" class="md-nav__link">
+    global tensor 参与计算
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    扩展阅读
+  </a>
+  
+    <nav class="md-nav" aria-label="扩展阅读">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oneflow" class="md-nav__link">
+    OneFlow 多机多卡启动 和 依赖的环境变量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -871,13 +981,13 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Global data of global tensor:</span><span class="se">\n</span><span class="s2"> &quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
 </code></pre></div>
 在上述代码中有一些新出现的概念：
-- <code>placement</code> 表示 global tensor 分布的物理设备，参数 <code>type</code> 指定了物理设备的类型，可选值为 <code>“cpu”</code> 或 <code>“cuda”</code>，参数 <code>ranks</code> 指定了设备 ID；
+- <code>placement</code> 表示 global tensor 分布的物理设备，参数 <code>type</code> 指定了物理设备的类型，这里使用<code>“cuda”</code> 表示 GPU 设备，参数 <code>ranks</code> 指定了设备 ID；
 - <code>sbp</code> 表示 global tensor 分布的方式，代码中的 <code>sbp = flow.sbp.split(dim=0)</code> 表示把 global tensor 在维度 0 均匀切分；
-- <code>to_local()</code> 可以从 global tensor 中获取其在当前 rank 的 local tensor，因为 global tensor 在每个 rank 都内含了一个 local tensor 作为实际存在的本地分量；</p>
+- <code>to_local()</code> 可以从 global tensor 中获取其在当前 rank 的 local tensor，因为 global tensor 在每个 rank 都内含了一个 local tensor 作为实际存在的本地分量。</p>
 <p>然后配置下多进程启动依赖的环境变量。这里是两卡执行，对应两个进程启动，所以需要打开两个 Terminal，分别配置如下环境变量：</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>分别 <strong>点击</strong> 以下 Terminal 0 或 Terminal 1 标签，查看2个控制台的命令/代码</p>
+<p>分别 <strong>点击</strong> 以下 Terminal 0 或 Terminal 1 标签，查看 2 个控制台的命令/代码</p>
 </div>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Terminal 0</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">MASTER_ADDR</span><span class="o">=</span><span class="m">127</span>.0.0.1 <span class="nv">MASTER_PORT</span><span class="o">=</span><span class="m">17789</span> <span class="nv">WORLD_SIZE</span><span class="o">=</span><span class="m">2</span> <span class="nv">RANK</span><span class="o">=</span><span class="m">0</span> <span class="nv">LOCAL_RANK</span><span class="o">=</span><span class="m">0</span>
@@ -918,50 +1028,54 @@ Global data of global tensor:
 <p>创建如下程序，采用上文同样的方式启动：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">is_local</span><span class="p">)</span> <span class="c1"># True</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">is_global</span><span class="p">)</span> <span class="c1"># False</span>
-<span class="n">placement</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">placement</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">sbp</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">x_global</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">placement</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">sbp</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x_global</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># (4, 5)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">is_local</span><span class="p">)</span> <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">is_local</span><span class="p">)</span> <span class="c1"># True</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x_global</span><span class="o">.</span><span class="n">is_global</span><span class="p">)</span> <span class="c1"># True</span>
 </code></pre></div>
-<p>该程序在2台设备上分别创建了 <code>shape=(2,5)</code> 的2个 gup 内存上的 local tensor, 即 x。</p>
-<p>然后定义 placement 为 rank 0 和 1 上的 cuda 设备，sbp 为 tensor 第 0 维的切分，原本 local tensor 经过 <code>to_global</code> 变换后，就变成一个 global tensor 名为 x_global.</p>
-<p>可以观察到 x_global 的 shape 变为了 <code>(4, 5)</code>，这里显示的 shape 是 global tensor 的 shape。local tensor 的 <code>to_global</code> 方法提供了 tensor 类型的转换，含义是原本的 local tensor 是要转换成的总量（global tensor） 在本 rank 的分量(local tensor)。分量和总量的关系是在 placement 上 按 sbp 转换而来的，比如这里原 x 和 x_global 的关系是在 0 和 1 gpu 上，按 x_global tensor 的第 0 维 split 而来的 x。因此 <code>to_global</code> 可以从 x 的 shape 推理出 x_global 的 shape：把原 local tensor 的 shape 在第 0 维拼接。这里说的 global tensor 的 shape，准确的讲是 global shape。</p>
-<p>global tensor 除了shape，还有数据部分。一个 global tensor 的内部，在每个 rank 上都内含了一个 local tensor 作为其本地分量，这个 local tensor 就是 global tensor 在每个 rank 的物理数据。这也是我们期待的，物理上每个 rank 只需要保存一个分量的数据。</p>
+<p>该程序在 2 个 GPU 设备上分别创建了 <code>shape=(2,5)</code> 的  local tensor，即 x。</p>
+<p>然后定义 placement 为 rank 0 和 1 上的 cuda 设备，sbp 为 tensor 第 0 维的切分，原本 local tensor 经过 <code>to_global</code> 变换后，就变成一个名为 <code>x_global</code> 的 global tensor。</p>
+<p>可以观察到 <code>x_global</code> 的 shape 变为了 <code>(4, 5)</code>，这里显示的 shape 是 global tensor 的 shape。local tensor 的 <code>to_global</code> 方法提供了 tensor 类型的转换，原本的 local tensor 是要转换成的总量（global tensor） 在本 rank 的分量（local tensor）。分量和总量的关系是在 placement 上按 sbp 转换而来的，比如这里 <code>x</code> 和 <code>x_global</code> 的关系是在 0 和 1 号 GPU 上，按 <code>x_global</code> 的第 0 维 split 而得到 <code>x</code>。因此 <code>to_global</code> 可以从 x 的 shape 推理出 x_global 的 shape：把原 local tensor 的 shape 在第 0 维拼接。这里说的 global tensor 的 shape，准确地讲是 global shape。</p>
+<p>global tensor 除了 shape，还有数据部分。对于一个 global tensor 的内部，在每个 rank 上都内含了一个 local tensor 作为其本地分量，这个 local tensor 就是 global tensor 在每个 rank 的物理数据。这也是我们期待的，物理上每个 rank 只需要保存一个分量的数据。</p>
 <h3 id="global-tensor-local-tensor">由 global tensor 得到 local tensor<a class="headerlink" href="#global-tensor-local-tensor" title="Permanent link">&para;</a></h3>
-<p>如果想得到 global tensor 的本地分量，可以通过 <a href="https://oneflow.readthedocs.io/en/master/tensor.html#oneflow.Tensor.to_local">to_local</a> 方法得到这个对应的 local tensor。接上面的程序，增加 <code>print(x.to_local())</code>，在不同的 rank 分别得到一个 shape 为 <code>(2, 5)</code> 的本地分量 tensor。</p>
+<p>如果想得到 global tensor 的本地分量，可以通过 <a href="https://oneflow.readthedocs.io/en/master/tensor.html#oneflow.Tensor.to_local">to_local</a> 方法得到这个对应的 local tensor。接上面的程序，增加 <code>print(x_global.to_local())</code>，在不同的 rank 分别得到一个 shape 为 <code>(2, 5)</code> 的本地分量 tensor。</p>
 <div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Terminal 0</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="n">prrint</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">to_local</span><span class="p">())</span>
-<span class="n">tensor</span><span class="p">([[</span> <span class="mf">2.9186e-01</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.9442e-01</span><span class="p">,</span>  <span class="mf">4.7072e-04</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.2216e-01</span><span class="p">,</span>  <span class="mf">1.7788e-01</span><span class="p">],</span>
-        <span class="p">[</span><span class="o">-</span><span class="mf">4.5284e-01</span><span class="p">,</span>  <span class="mf">1.2361e-01</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.5962e-01</span><span class="p">,</span>  <span class="mf">2.6651e-01</span><span class="p">,</span>  <span class="mf">1.2951e+00</span><span class="p">]],</span>
-    <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda:0&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">tensor</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.2730</span><span class="p">,</span>  <span class="mf">1.8042</span><span class="p">,</span>  <span class="mf">0.0721</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5024</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2583</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mf">0.3379</span><span class="p">,</span>  <span class="mf">0.9371</span><span class="p">,</span>  <span class="mf">0.7981</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5447</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5629</span><span class="p">]],</span>
+         <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Terminal 1</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">to_local</span><span class="p">())</span>
-<span class="n">tensor</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.4363</span><span class="p">,</span>  <span class="mf">0.9985</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5387</span><span class="p">,</span>  <span class="mf">0.3003</span><span class="p">,</span>  <span class="mf">0.3803</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.0556</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8077</span><span class="p">,</span>  <span class="mf">1.1191</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.1278</span><span class="p">,</span>  <span class="mf">0.1468</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda:1&#39;</span><span class="p">,</span>
-    <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">tensor</span><span class="p">([[</span> <span class="mf">0.6829</span><span class="p">,</span>  <span class="mf">0.4849</span><span class="p">,</span>  <span class="mf">2.1611</span><span class="p">,</span>  <span class="mf">1.4059</span><span class="p">,</span>  <span class="mf">0.0934</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mf">0.0301</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.6942</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8094</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.3050</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1778</span><span class="p">]],</span>
+         <span class="n">dtype</span><span class="o">=</span><span class="n">oneflow</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 </code></pre></div>
 </div>
 </div>
 <p><code>to_local()</code> 没有任何参数，是因为 global tensor 已经通过 placement 和 sbp 指定好了它的本地分量的信息。</p>
 <h3 id="global-tensor-global-tensor">由 global tensor 转成 另外一个 global tensor<a class="headerlink" href="#global-tensor-global-tensor" title="Permanent link">&para;</a></h3>
-<p>通常做分布式计算都需要在正常的计算逻辑之间插入通信操作，在 OneFlow 只需要做 global tensor 的转换。因为 global tensor 中的 sbp 参数指定了数据的分布情况：
-- s，即 split(dim)， 表示在 dim 维度切分的分布关系；
-- b，即 broadcast，表示广播的数据分布关系；
-- p，即 partial_sum，表示 element-wise 的部分累加分布关系；
-详情参考<a href="https://docs.oneflow.org/master/parallelism/02_sbp.html#sbp">SBP</a>.</p>
-<p>因为 global tensor 中含有数据分布的信息，如果需要变成另外一种数据分布，只需要创建另外一个 global tensor就好了。创建另外一个 global tensor 的过程，其中需要的通信会被自动推理和执行，从而避免了手写通信操作。自动推理并执行通信背后依赖的是 OneFlow 的 <a href="https://docs.oneflow.org/master/parallelism/03_consistent_tensor#boxing-sbp">Boxing</a>，一种自动做数据 re-distribution 的机制。</p>
+<p>进行分布式计算通常都需要在正常的计算逻辑之间插入通信操作，而使用 OneFlow 时只需要做 global tensor 的转换。因为 global tensor 中的 sbp 参数指定了数据的分布情况：
+- s，即 split(dim)， 表示在 dim 维度切分的分布关系；</p>
+<ul>
+<li>
+<p>b，即 broadcast，表示广播的数据分布关系；</p>
+</li>
+<li>
+<p>p，即 partial_sum，表示 element-wise 的部分累加分布关系；</p>
+</li>
+</ul>
+<p>详情参考 <a href="https://docs.oneflow.org/master/parallelism/02_sbp.html#sbp">SBP</a>。</p>
+<p>因为 global tensor 中含有数据分布的信息，如果需要变成另外一种数据分布，只需要创建另外一个 global tensor 就好了。创建另外一个 global tensor 的过程，其中需要的通信会被自动推理和执行，从而避免了手写通信操作。自动推理并执行通信背后依赖的是 OneFlow 的 <a href="https://docs.oneflow.org/master/parallelism/03_consistent_tensor#boxing-sbp">Boxing</a>，一种自动做数据 re-distribution 的机制。</p>
 <p>下面看一个例子，该例子可以把一个按 split 分布的 global tensor 转换为一个按 broadcast 分布的 global tensor：
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
-<span class="n">placement</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+<span class="n">placement</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">placement</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="n">ranks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">sbp</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">sbp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">x_global</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to_global</span><span class="p">(</span><span class="n">placement</span><span class="o">=</span><span class="n">placement</span><span class="p">,</span> <span class="n">sbp</span><span class="o">=</span><span class="n">sbp</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x_global</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># (4, 5)</span>
@@ -971,11 +1085,9 @@ Global data of global tensor:
 <span class="nb">print</span><span class="p">(</span><span class="n">x_global_b</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># (4, 5)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x_global_b</span><span class="o">.</span><span class="n">to_local</span><span class="p">())</span>
 </code></pre></div>
-可以看到，<code>x_global</code> 到 <code>x_global_b</code> 的变化就是 sbp 从 <code>flow.sbp.split(0)</code> 变成了 <code>flow.sbp.broadcast</code>。他们的 global shape 都是 <code>(4, 5)</code>，但是本地分量从一个分片变成了一个完整的数据，这个变化可以从对 <code>to_local()</code> 的打印结果观察到：这里的 <code>to_global</code> 变换完成了物理数据的归并。通常来讲，需要用户手写一个 <code>all-gather</code> 集合通信来完成同样的操作，而在 OneFlow Global Tensor 中，这个通信操作的推理和执行被自动完成了，用户只需要指定期望的 global tensor 的数据分布就好。</p>
+可以看到，<code>x_global</code> 到 <code>x_global_b</code> 的变化就是 sbp 从 <code>flow.sbp.split(0)</code> 变成了 <code>flow.sbp.broadcast</code>。他们的 global shape 都是 <code>(4, 5)</code>，但是本地分量从一个分片变成了一个完整的数据，这个变化可以从对 <code>to_local()</code> 的打印结果观察到。这里的 <code>to_global</code> 变换完成了物理数据的归并，通常来讲，这需要用户手写一个 <code>all-gather</code> 集合通信来完成同样的操作，而在 OneFlow Global Tensor 中，这个通信操作的推理和执行被自动完成了，用户只需要指定期望的 global tensor 的数据分布就好。</p>
 <p>通过指定期望的数据分布，就自动完成通信操作的推理和执行。让算法开发者可以 <code>thinking in data distribution</code> 而不是 <code>thinking in data communication operation</code>，从而极大提高分布式程序的开发效率。</p>
-<p>这里补充介绍一下 global tensor 的 <code>numpy()</code> 方法，对于任意的 global tensor 如 <code>x_global，x_global.numpy</code> 等价于 <code>x_global.to_global(spb=flow.sbp.broadcast).to_local().numpy()</code>，即内部隐含了一次原 global tensor 到 sbp 为 flow.sbp.broadcast() 的操作，加一次 to_local 操作，最后对这个 local tensor 调用 numpy() 方法。所以 x_global.numpy() 得到的是一个完整的数据。
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">x_global</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
-</code></pre></div></p>
+<p>这里补充介绍一下 global tensor 的 <code>numpy()</code> 方法，对于任意的 global tensor 如 <code>x_global</code>，<code>x_global.numpy()</code> 等价于 <code>x_global.to_global(spb=flow.sbp.broadcast).to_local().numpy()</code>，即内部隐含了一次将原 global tensor 转成 sbp 为 flow.sbp.broadcast() 的 global tensor，然后进行一次 to_local 操作，最后对这个 local tensor 调用 <code>numpy()</code> 方法。所以 <code>x_global.numpy()</code> 得到的是一个完整的数据。</p>
 <h3 id="global-tensor_2">global tensor 参与计算<a class="headerlink" href="#global-tensor_2" title="Permanent link">&para;</a></h3>
 <p>前面了解了global tensor的概念、创建、和 local tensor 的转换、和 global tensor 的转换，这部分介绍 global tensor 如何参与实际计算。这里以 global tensor 参与乘法计算为例，构造如下程序：
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
@@ -1058,6 +1170,26 @@ Global data of global tensor:
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="zero.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: Zero Redundancy Optimizer (ZeRO)" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Zero Redundancy Optimizer (ZeRO)
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
