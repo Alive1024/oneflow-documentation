@@ -959,7 +959,7 @@
                 
                 
                 <h1 id="global-tensor">使用 Global Tensor 进行多机多设备编程<a class="headerlink" href="#global-tensor" title="Permanent link">&para;</a></h1>
-<p>By <a href="https://github.com/doombeaker">YaoChi</a>, <a href="https://github.com/strint">Xu Xiaoyu</a>, <a href="https://github.com/Alive1024">Zuo Yihao</a></p>
+<p>By <a href="https://github.com/doombeaker">YaoChi</a>, <a href="https://github.com/strint">Xu Xiaoyu</a>, <a href="https://github.com/Alive1024">Zuo Yihao</a>, <a href="https://github.com/lmyybh">Guoliang Cheng</a></p>
 <p>Global Tensor 是为了方便多机多设备分布式执行的 Tensor，是实现全局视角（Global View）编程的接口。</p>
 <p>在大部分编程语言中，Global 的含义是进程内的全局可见，比如<a href="https://en.wikipedia.org/wiki/Global_variable">全局变量（Global Variable）</a>。但是 Global Tensor 中的 “Global” 的含义是进程间全局可见，所以 Global Tensor 更为准确的的说法是 Global (on all processes) Tensor，即所有进程可见的 Tensor。使用 Global Tensor 时，在每个进程（也叫 Rank）有一个对应设备（如 GPU），在所有进程被算子执行时，算子就会自动完成对该 Tensor 的多机多设备分布式执行。</p>
 <p>当前常用的 Tensor，只在单个进程内可见，存在于一个设备设备上。为了区分，会把这种 Tensor 叫做 Local Tensor。Local 是相对 Global 而言的，所以 Local Tensor 可以认为是 Local (on one process) Tensor。</p>
