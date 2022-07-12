@@ -659,7 +659,7 @@
         
           <li class="md-nav__item">
   <a href="#local-tensor-global-tensor" class="md-nav__link">
-    由 Local Tensor 转换得到 Global Tensor
+    由 Local Tensor 得到 Global Tensor
   </a>
   
 </li>
@@ -673,7 +673,7 @@
         
           <li class="md-nav__item">
   <a href="#global-tensor-global-tensor" class="md-nav__link">
-    由 Global Tensor 转成 另外一个 Global Tensor
+    由 Global Tensor 转成另一个 Global Tensor
   </a>
   
 </li>
@@ -911,7 +911,7 @@
         
           <li class="md-nav__item">
   <a href="#local-tensor-global-tensor" class="md-nav__link">
-    由 Local Tensor 转换得到 Global Tensor
+    由 Local Tensor 得到 Global Tensor
   </a>
   
 </li>
@@ -925,7 +925,7 @@
         
           <li class="md-nav__item">
   <a href="#global-tensor-global-tensor" class="md-nav__link">
-    由 Global Tensor 转成 另外一个 Global Tensor
+    由 Global Tensor 转成另一个 Global Tensor
   </a>
   
 </li>
@@ -1017,10 +1017,12 @@
 <span class="c1"># Print global data</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Global data of global tensor:</span><span class="se">\n</span><span class="s2"> &quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
 </code></pre></div>
-<p>在上述代码中有一些新出现的概念：
-- <code>placement</code> 表示 Global Tensor 分布的物理设备，参数 <code>type</code> 指定了物理设备的类型，这里使用<code>“cuda”</code> 表示 GPU 设备，参数 <code>ranks</code> 指定了设备 ID。对于没有 2 张 GPU 的读者，在这里可以将 <code>type</code> 指定为 <code>"cpu"</code>，这样可以使用 CPU 模拟多个设备，下文的代码同样适用；
-- <code>sbp</code> 表示 Global Tensor 分布的方式，代码中的 <code>sbp = flow.sbp.split(dim=0)</code> 表示把 Global Tensor 在维度 0 均匀切分；
-- <code>to_local()</code> 可以从 Global Tensor 中获取其在当前 rank 的 Local Tensor，因为 Global Tensor 在每个 rank 都内含了一个 Local Tensor 作为实际存在的本地分量。</p>
+<p>在上述代码中有一些新出现的概念：</p>
+<ul>
+<li><code>placement</code> 表示 Global Tensor 分布的物理设备，参数 <code>type</code> 指定了物理设备的类型，这里使用<code>“cuda”</code> 表示 GPU 设备，参数 <code>ranks</code> 指定了设备 ID。对于没有 2 张 GPU 的读者，在这里可以将 <code>type</code> 指定为 <code>"cpu"</code>，这样可以使用 CPU 模拟多个设备，下文的代码同样适用；</li>
+<li><code>sbp</code> 表示 Global Tensor 分布的方式，代码中的 <code>sbp = flow.sbp.split(dim=0)</code> 表示把 Global Tensor 在维度 0 均匀切分；</li>
+<li><code>to_local()</code> 可以从 Global Tensor 中获取其在当前 rank 的 Local Tensor，因为 Global Tensor 在每个 rank 都内含了一个 Local Tensor 作为实际存在的本地分量。</li>
+</ul>
 <p>然后配置下多进程启动依赖的环境变量。这里是两卡执行，对应两个进程启动，所以需要打开两个 Terminal，分别配置如下环境变量：</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1060,7 +1062,7 @@ Global data of global tensor:
  [-0.8570119  -0.91476554 -0.06646168  0.50022084 -0.4387695 ]]
 </code></pre></div>
 可以发现两个 rank 的 Local Tensor 在维度 0 拼接后，就是完整的 Global Tensor 的值。</p>
-<h3 id="local-tensor-global-tensor">由 Local Tensor 转换得到 Global Tensor<a class="headerlink" href="#local-tensor-global-tensor" title="Permanent link">&para;</a></h3>
+<h3 id="local-tensor-global-tensor">由 Local Tensor 得到 Global Tensor<a class="headerlink" href="#local-tensor-global-tensor" title="Permanent link">&para;</a></h3>
 <p>可以先创建 Local Tensor，再利用 <a href="https://oneflow.readthedocs.io/en/master/tensor.html#oneflow.Tensor.to_global">Tensor.to_global</a> 方法，将 Local Tensor 转为 Global Tensor。</p>
 <p>创建如下程序，采用上文同样的方式启动：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span>
@@ -1098,7 +1100,7 @@ Global data of global tensor:
 </div>
 </div>
 <p><code>to_local()</code> 没有任何参数，是因为 Global Tensor 已经通过 placement 和 SBP 指定好了它的本地分量的信息。</p>
-<h3 id="global-tensor-global-tensor">由 Global Tensor 转成 另外一个 Global Tensor<a class="headerlink" href="#global-tensor-global-tensor" title="Permanent link">&para;</a></h3>
+<h3 id="global-tensor-global-tensor">由 Global Tensor 转成另一个 Global Tensor<a class="headerlink" href="#global-tensor-global-tensor" title="Permanent link">&para;</a></h3>
 <p>进行分布式计算通常都需要在正常的计算逻辑之间插入通信操作，而使用 OneFlow 时只需要做 Global Tensor 的数据分布类型转换。</p>
 <p>Global Tensor 相比普通的 Local Tensor，从类型上讲，最大的区别是带有全局数据分布类型（Global Data Distribution Type）。全局数据分布类型指定了 Global Tensor 在每个进程（Rank）的数据分布情况。由 Placement 和 SBP 组成。</p>
 <p>全局数据分布类型中的 Placement 指定了数据分布的设备集合:</p>
@@ -1171,12 +1173,14 @@ Global data of global tensor:
 </ul>
 <p>此处，<code>flow.sbp.split(0)</code> 和 <code>flow.sbp.broadcast</code> 相乘的输出数据会被推理成 <code>flow.sbp.split(0)</code>。<code>x</code> 在每个 rank 上是一个分片数据，<code>w</code> 是一个完整的数据，二者矩阵乘法得到的 <code>y</code> 是一个分片的数据。看到这里，了解常见并行方式的朋友可以发现：这里实现了一个数据并行的前向计算，<code>x</code> 是切片的数据，<code>w</code> 是完整的参数。</p>
 <h3 id="_1">结语<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>上文介绍了：
-- Global View 特殊的 SPSD 编程视角；
-- Global Tensor 的跨 Rank 执行特点；
-- Global Tensor 和 Local Tensor 的互转；
-- 通过 Global Tensor 的全局数据分布类型转换来实现分布式通信；
-- OneFlow 算子的多态特性支持 Global Tensor 的执行；</p>
+<p>上文介绍了：</p>
+<ul>
+<li>Global View 提供的 SPSD 编程视角；</li>
+<li>Global Tensor 的跨进程可见的执行特点；</li>
+<li>Global Tensor 和 Local Tensor 的互转；</li>
+<li>通过 Global Tensor 的全局数据分布类型转换来实现分布式通信；</li>
+<li>OneFlow 算子的多态特性支持 Global Tensor 的执行；</li>
+</ul>
 <p>至此，本文从 Global Tensor 的创建开始，最终完成了一个基于 Global Tensor 的数据并行计算流程。</p>
 <p>更多并行方式和 SBP 的推理逻辑，将在后续内容介绍。</p>
 <h2 id="_2">扩展阅读<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
