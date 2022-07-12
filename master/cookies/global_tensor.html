@@ -1180,7 +1180,7 @@ Global data of global tensor:
 <ul>
 <li><code>MASTER_ADDR</code>：多机训练的第 0 号机器的 IP；</li>
 <li><code>MASTER_PORT</code>：多机训练的第 0 号机器的监听端口，不与已经占用的端口冲突即可；</li>
-<li><code>WORLD_SIZE</code>：整个集群中计算设备的数目，因为目前还不支持各个机器上显卡数目不一致，因此 <code>WORLD_SIZE</code> 的数目实际上是 <span class="arithmatex">\(机器数目 \times 每台机器上的显卡数目\)</span>。<a href="#创建-Global-Tensor">创建 Global Tensor</a> 中的示例是单机 2 卡的情况，因此 <code>WORLD_SIZE=2</code>；</li>
+<li><code>WORLD_SIZE</code>：整个集群中计算设备的数目，因为目前还不支持各个机器上显卡数目不一致，因此 <code>WORLD_SIZE</code> 的数目实际上是 <span class="arithmatex">\(机器数目 \times 每台机器上的显卡数目\)</span>。<a href="#global-tensor_2">创建 Global Tensor</a> 中的示例是单机 2 卡的情况，因此 <code>WORLD_SIZE=2</code>；</li>
 <li><code>RANK</code>：集群内所有机器下的进程编号；</li>
 <li><code>LOCAL_RANK</code>：单个机器内的进程编号；</li>
 </ul>
